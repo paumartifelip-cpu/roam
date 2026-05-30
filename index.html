@@ -14,7 +14,7 @@
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
     html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; max-width: 100%; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; max-width: 100%; overflow-wrap: break-word; word-break: break-word; }
 
     /* ── FADE IN ON SCROLL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
@@ -329,7 +329,8 @@
     .ruta-top {
       display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-bottom: 4rem;
     }
-    .ruta-desc p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .ruta-top > div { min-width: 0; overflow: hidden; }
+    .ruta-desc p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; overflow-wrap: anywhere; }
     .ruta-badge-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.5rem; }
     .ruta-badge {
       display: inline-flex; align-items: center; gap: 0.4rem;
@@ -476,8 +477,10 @@
       .ruta-badge { width: 100%; justify-content: center; }
       .ruta-footer { flex-direction: column; align-items: stretch; padding: 1.25rem; }
       .ruta-footer .btn-dark { text-align: center; }
-      .price-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: var(--r); }
-      .price-table { min-width: 420px; }
+      .price-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: var(--r); max-width: 100%; }
+      .price-table { min-width: 340px; width: 100%; }
+      .price-table td:first-child { font-size: 0.82rem; }
+      .price-table td:last-child { font-size: 0.92rem; padding-left: 0.5rem; }
 
       /* cta */
       .cta-section { padding: 4rem 1rem; }
