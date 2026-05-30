@@ -13,8 +13,8 @@
       --green: #00b87a; --r: 8px;
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; max-width: 100%; }
 
     /* ── FADE IN ON SCROLL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
@@ -127,7 +127,7 @@
 
     /* ── SECTION HELPERS ── */
     section { padding: 6rem 2rem; }
-    .container { max-width: 1100px; margin: 0 auto; }
+    .container { max-width: 1100px; margin: 0 auto; width: 100%; }
     .section-label {
       display: inline-block; background: #f0f0f5; border: 1px solid var(--border);
       color: var(--muted); padding: 0.28rem 0.85rem; border-radius: var(--r);
@@ -426,30 +426,71 @@
       .steps-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 640px) {
-      nav { padding: 0.8rem 1.25rem; }
+      /* nav */
+      nav { padding: 0.8rem 1rem; gap: 0.5rem; }
       .nav-links { display: none; }
+      .nav-cta { display: none; }
       .hamburger { display: flex; }
-      section { padding: 4rem 1.25rem; }
-      .positioning-section { padding: 3.5rem 1.25rem; }
-      .method-grid { grid-template-columns: 1fr 1fr; }
-      .method-card { padding: 1.75rem 1.25rem; }
-      .method-letter { font-size: 3.5rem; }
-      .authority-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .steps-grid { grid-template-columns: 1fr; }
+
+      /* layout */
+      section { padding: 3.5rem 1rem; }
+      .container { width: 100%; padding: 0; }
+      .positioning-section { padding: 3rem 1rem; }
+      .trusted-section { padding: 2rem 0; }
+
+      /* hero */
+      .hero { padding: 7rem 1rem 3.5rem; }
       .fi { display: none; }
-      .hero-btns { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; }
+      .hero h1 { letter-spacing: -1px; }
+      .hero p { font-size: 1rem; }
+      .hero-btns { flex-direction: column; align-items: stretch; width: 100%; }
       .hero-btns a { text-align: center; }
-      .cta-btns { flex-direction: column; align-items: stretch; max-width: 320px; margin: 0 auto; }
-      .cta-btns a { text-align: center; justify-content: center; }
+
+      /* method */
+      .method-grid { grid-template-columns: 1fr 1fr; }
+      .method-card { padding: 1.5rem 1rem; }
+      .method-letter { font-size: 3rem; }
+
+      /* authority */
+      .authority-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+      /* steps */
+      .steps-grid { grid-template-columns: 1fr; }
+
+      /* quotes */
       .quotes-grid { grid-template-columns: 1fr; }
+
+      /* novacc */
       .novacc-headline { font-size: clamp(1.75rem, 7vw, 2.5rem); }
-      .prob-text { font-size: 0.9rem; }
+      .novacc-right p { font-size: 0.95rem; }
+
+      /* problems */
+      .prob-text { font-size: 0.875rem; }
       .prob-emoji { display: none; }
-      .footer-links { gap: 1rem; }
+
+      /* ruta */
+      .ruta-section { padding: 3.5rem 1rem; }
+      .ruta-top { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
+      .ruta-desc p { font-size: 0.9rem; word-break: break-word; }
+      .ruta-badge-row { flex-direction: column; gap: 0.5rem; }
+      .ruta-badge { width: 100%; justify-content: center; }
+      .ruta-footer { flex-direction: column; align-items: stretch; padding: 1.25rem; }
+      .ruta-footer .btn-dark { text-align: center; }
+      .price-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: var(--r); }
+      .price-table { min-width: 420px; }
+
+      /* cta */
+      .cta-section { padding: 4rem 1rem; }
+      .cta-btns { flex-direction: column; align-items: stretch; }
+      .cta-btns a { text-align: center; justify-content: center; }
+
+      /* footer */
+      .footer-links { gap: 0.75rem; }
+      footer { padding: 2.5rem 1rem; }
     }
     @media (max-width: 400px) {
       .method-grid { grid-template-columns: 1fr; }
-      .hero h1 { letter-spacing: -1px; }
+      .authority-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
