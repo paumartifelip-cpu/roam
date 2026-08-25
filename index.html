@@ -3,950 +3,904 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roam – Innovación para Hoteles</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <title>ROAM · Fotos, Vídeos y Ayuda para tu Hotel a Cambio de Alojamiento</title>
+  <meta name="description" content="Nos quedamos en tu hotel y a cambio te hacemos fotos bonitas, vídeos para internet y te ayudamos con tecnología fácil." />
+  
+  <!-- Fonts: Bebas Neue (Titulares directos e impactantes) + Plus Jakarta Sans (Texto súper legible) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
     :root {
-      --bg: #fff; --bg2: #f5f5f7; --border: #e2e2e8;
-      --text: #0a0a0f; --muted: #6b6b80; --light: #9898b0;
-      --green: #00b87a; --r: 8px;
-      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --roam: #E95832;             /* Terracota */
+      --roam-dark: #cc3f1b;
+      --roam-soft: #fdf0ec;
+      --bg: #FFFFFF;
+      --bg-alt: #F5F5F5;
+      --bg-dark: #111111;
+      --text: #111111;
+      --text-muted: #666666;
+      --border: #E5E5E5;
+      --border-dark: #111111;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --pill: 9999px;
+      --r-card: 16px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
-    html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; max-width: 100%; overflow-wrap: break-word; word-break: break-word; }
 
-    /* ── FADE IN ON SCROLL ── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; background: var(--bg); }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      overflow-x: hidden;
+      max-width: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
     .reveal.visible { opacity: 1; transform: none; }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
 
-    /* ── NAV ── */
+    /* ── BARRA SUPERIOR ── */
+    .top-bar {
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      padding: 0.45rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.75rem; font-weight: 700; color: var(--text-muted);
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .top-bar-links { display: flex; gap: 1.5rem; }
+    .top-bar-links a { color: var(--text-muted); text-decoration: none; }
+    .top-bar-links a:hover { color: var(--text); }
+
+    /* ── MENÚ DE NAVEGACIÓN ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: sticky; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0.9rem 2.5rem;
-      background: rgba(255,255,255,0.92); backdrop-filter: blur(16px);
+      padding: 1.1rem 3rem;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
-    .logo { font-size: 1.25rem; font-weight: 900; letter-spacing: -0.5px; color: var(--text); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-left { display: flex; align-items: center; gap: 2.5rem; }
+    .logo-wrap { display: flex; align-items: baseline; text-decoration: none; color: var(--text); }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 2.4rem; font-weight: 900; letter-spacing: 1px; line-height: 0.9;
+    }
+    .logo span { color: var(--roam); }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
     .nav-links a {
-      color: var(--muted); text-decoration: none; font-size: 0.875rem; font-weight: 500;
-      position: relative; padding-bottom: 2px; transition: color 0.25s var(--ease);
+      color: var(--text); text-decoration: none; font-size: 0.92rem; font-weight: 700;
+      letter-spacing: -0.01em; transition: color 0.2s;
     }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1.5px;
-      background: var(--text); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease);
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a:hover::after { transform: scaleX(1); }
-    .nav-cta {
-      background: var(--text); color: #fff; padding: 0.55rem 1.3rem;
-      border-radius: var(--r); font-size: 0.82rem; font-weight: 700;
-      text-decoration: none; transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
-    }
-    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+    .nav-links a:hover { color: var(--roam); }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; text-align: center;
-      padding: 9rem 2rem 5rem; position: relative; overflow: hidden; background: #fff;
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .nav-ai-pill {
+      background: var(--bg-alt); color: var(--text); padding: 0.5rem 1.1rem;
+      border-radius: var(--pill); font-size: 0.8rem; font-weight: 800; text-decoration: none;
+      transition: background 0.2s, color 0.2s;
     }
-    .floats { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-    .fi {
-      position: absolute; display: flex; align-items: center; justify-content: center;
-      border-radius: var(--r); font-size: 1.6rem; background: #fff;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
-      animation: bobble ease-in-out infinite;
-    }
-    @keyframes bobble { 0%,100%{transform:translateY(0) rotate(var(--rot,0deg))} 50%{transform:translateY(-14px) rotate(var(--rot,0deg))} }
+    .nav-ai-pill:hover { background: var(--text); color: #fff; }
 
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: #f0f0f5; border: 1px solid var(--border);
-      color: var(--muted); padding: 0.35rem 1rem; border-radius: var(--r);
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; margin-bottom: 1.75rem;
+    .btn-pill-roam {
+      background: var(--roam); color: #fff; padding: 0.65rem 1.5rem;
+      border-radius: var(--pill); font-size: 0.86rem; font-weight: 800;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+      transition: background 0.2s, transform 0.2s; border: none; cursor: pointer;
     }
-    .hero h1 {
-      font-size: clamp(2.6rem, 6.5vw, 5rem); font-weight: 900;
-      line-height: 1.06; letter-spacing: -2px; max-width: 820px;
-    }
-    .hero h1 em {
-      font-style: normal;
-      background: linear-gradient(135deg, #ffb65c 0%, #ffa340 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .hero p { max-width: 540px; font-size: 1.1rem; color: var(--muted); margin: 1.5rem auto 2.5rem; }
-    .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
-    .btn-dark {
-      background: var(--text); color: #fff; padding: 0.9rem 2.2rem;
-      border-radius: var(--r); font-size: 0.95rem; font-weight: 700;
-      text-decoration: none; display: inline-block;
-      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
-    }
-    .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-    .btn-outline {
-      background: transparent; color: var(--text); border: 1.5px solid var(--border);
-      padding: 0.9rem 2.2rem; border-radius: var(--r); font-size: 0.95rem; font-weight: 600;
-      text-decoration: none; display: inline-block;
-      transition: border-color 0.25s var(--ease), background 0.25s var(--ease), transform 0.25s var(--ease);
-    }
-    .btn-outline:hover { border-color: var(--text); background: var(--bg2); transform: translateY(-2px); }
+    .btn-pill-roam:hover { background: var(--roam-dark); transform: scale(1.02); }
 
-    /* ── TRUSTED BY ── */
-    .trusted-section {
-      padding: 2.5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      background: #fff; overflow: hidden;
+    .btn-pill-outline {
+      background: transparent; color: var(--text); padding: 0.85rem 2rem;
+      border-radius: var(--pill); font-size: 0.95rem; font-weight: 800;
+      text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+      border: 1.5px solid var(--border-dark); cursor: pointer; transition: all 0.2s;
     }
-    .trusted-label {
-      text-align: center; font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase; color: var(--light); margin-bottom: 1.5rem;
-    }
-    .marquee-wrapper {
-      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-    }
-    .marquee-track { display: flex; animation: marquee 30s linear infinite; width: max-content; }
-    .marquee-track:hover { animation-play-state: paused; }
-    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-    .hotel-pill {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.5rem 1.3rem; margin: 0 0.45rem;
-      background: #fff; border: 1.5px solid var(--border); border-radius: var(--r);
-      white-space: nowrap; font-size: 0.8rem; font-weight: 600; color: var(--muted);
-      transition: border-color 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
-    }
-    .hotel-pill:hover { border-color: var(--text); color: var(--text); transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,0.08); }
-    .hotel-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.35; flex-shrink: 0; }
+    .btn-pill-outline:hover { background: var(--bg-alt); transform: scale(1.02); }
 
-    /* ── SECTION HELPERS ── */
-    section { padding: 6rem 2rem; }
-    .container { max-width: 1100px; margin: 0 auto; width: 100%; }
-    .section-label {
-      display: inline-block; background: #f0f0f5; border: 1px solid var(--border);
-      color: var(--muted); padding: 0.28rem 0.85rem; border-radius: var(--r);
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;
-    }
-    .section-title { font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 900; letter-spacing: -1px; color: var(--text); margin-bottom: 0.75rem; }
-    .section-sub { color: var(--muted); font-size: 1rem; max-width: 540px; }
-    .text-center { text-align: center; }
-    .text-center .section-sub { margin: 0 auto; }
-
-    /* ── POSITIONING ── */
-    .positioning-section { background: var(--text); color: #fff; padding: 5rem 2rem; text-align: center; }
-    .positioning-section p { font-size: clamp(1.1rem, 2.5vw, 1.5rem); line-height: 1.7; max-width: 700px; margin: 0 auto; }
-    .positioning-section strong { color: #fff; font-weight: 800; }
-    .pos-sep { display: block; height: 1.5rem; }
-    .pos-tag {
-      display: inline-block; border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.6); padding: 0.3rem 0.85rem;
-      border-radius: var(--r); font-size: 0.72rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2rem;
-    }
-
-    /* ── WHAT CAN YOUR HOTEL GET ── */
-    .services-section { background: var(--bg2); }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem; margin-top: 3rem;
-    }
-    .svc-card {
-      background: #fff; border: 1.5px solid var(--border); border-radius: var(--r);
-      padding: 2rem; display: flex; flex-direction: column; position: relative; overflow: hidden;
-      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
-      cursor: default;
-    }
-    .svc-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, #ffb65c, #ffa340);
-      transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease);
-    }
-    .svc-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.09); border-color: #ccc; }
-    .svc-card:hover::before { transform: scaleX(1); }
-    .svc-icon { font-size: 2rem; margin-bottom: 1rem; display: block; transition: transform 0.3s var(--ease); }
-    .svc-card:hover .svc-icon { transform: scale(1.1); }
-    .svc-card h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .svc-card p { font-size: 0.875rem; color: var(--muted); }
-
-    /* ── NO VENIMOS DE VACACIONES ── */
-    .novacc-section { background: #fff; }
-    .novacc-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-    }
-    .novacc-headline {
-      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900;
-      letter-spacing: -1.5px; line-height: 1.1;
-    }
-    .novacc-headline span { display: block; }
-    .novacc-headline .cross {
-      text-decoration: line-through; color: var(--light);
-      font-weight: 400; font-size: 0.85em;
-    }
-    .novacc-headline .bold { color: var(--text); }
-    .novacc-right p { font-size: 1.05rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
-    .novacc-right strong { color: var(--text); font-weight: 700; }
-    .novacc-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .pill {
-      background: var(--bg2); border: 1.5px solid var(--border);
-      padding: 0.4rem 1rem; border-radius: var(--r);
-      font-size: 0.8rem; font-weight: 600; color: var(--muted);
-      transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
-    }
-    .pill:hover { background: var(--text); border-color: var(--text); color: #fff; transform: translateY(-1px); }
-
-    /* ── MÉTODO ROAM ── */
-    .method-section { background: var(--bg2); }
-    .method-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3rem; }
-    .method-card {
-      background: #fff; padding: 2.5rem 1.75rem; position: relative; overflow: hidden;
-      transition: background 0.35s var(--ease);
-    }
-    .method-card::after {
-      content: ''; position: absolute; inset: 0; background: var(--text);
-      transform: translateY(101%); transition: transform 0.45s var(--ease); z-index: 0;
-    }
-    .method-card:hover::after { transform: translateY(0); }
-    .method-card:hover .method-letter,
-    .method-card:hover h3,
-    .method-card:hover p { color: rgba(255,255,255,0.9); }
-    .method-card:hover .method-letter { color: rgba(255,255,255,0.2); }
-    .method-letter {
-      font-size: 5rem; font-weight: 900; color: var(--bg2);
-      line-height: 1; letter-spacing: -3px; margin-bottom: 0.5rem;
-      position: relative; z-index: 1;
-      transition: color 0.35s var(--ease);
-    }
-    .method-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.6rem; position: relative; z-index: 1; transition: color 0.35s var(--ease); }
-    .method-card p { font-size: 0.85rem; color: var(--muted); position: relative; z-index: 1; transition: color 0.35s var(--ease); }
-    .method-sub { text-align: center; margin-top: 2.5rem; font-size: 1rem; color: var(--muted); max-width: 580px; margin-left: auto; margin-right: auto; }
-
-    /* ── PROBLEMS ── */
-    .problems-section { background: #fff; }
-    .problems-intro { text-align: center; margin-bottom: 3.5rem; }
-    .problems-intro .section-sub { margin: 0 auto; }
-    .problems-list { display: flex; flex-direction: column; }
-    .prob-row {
-      display: flex; align-items: center; gap: 1.25rem;
-      padding: 1.1rem 0; border-bottom: 1px solid var(--border);
-      transition: background 0.2s var(--ease);
-    }
-    .prob-row:last-child { border-bottom: none; }
-    .prob-row:hover { background: var(--bg2); padding-left: 0.75rem; padding-right: 0.75rem; margin: 0 -0.75rem; border-radius: var(--r); }
-    .prob-step {
-      width: 38px; height: 38px; border-radius: var(--r); flex-shrink: 0;
-      background: var(--bg2); border: 1.5px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem; font-weight: 900; color: var(--light);
-      transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
-    }
-    .prob-row:hover .prob-step { background: var(--text); border-color: var(--text); color: #fff; }
-    .prob-emoji { font-size: 1.4rem; flex-shrink: 0; }
-    .prob-text { font-size: 0.95rem; font-weight: 600; color: var(--text); flex: 1; }
-
-    /* ── AUTHORITY ── */
-    .authority-section { background: var(--text); color: #fff; padding: 6rem 2rem; text-align: center; }
-    .authority-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 3.5rem 0; }
-    .auth-stat { text-align: center; }
-    .auth-num { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; letter-spacing: -2px; color: #fff; line-height: 1; }
-    .auth-label { font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-top: 0.4rem; }
-    .authority-section > .container > p { font-size: 1.05rem; color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto; }
-
-    /* ── HOW IT WORKS ── */
-    .how-section { background: var(--bg2); }
-    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-    .step-card {
-      background: #fff; border: 1.5px solid var(--border); border-radius: var(--r);
-      padding: 2rem; position: relative; overflow: hidden;
-      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-    }
-    .step-card:hover { transform: translateY(-4px); box-shadow: 0 16px 44px rgba(0,0,0,0.09); }
-    .step-num {
-      font-size: 3.5rem; font-weight: 900; color: var(--bg2);
-      letter-spacing: -2px; line-height: 1; margin-bottom: 1rem;
-      transition: color 0.3s var(--ease);
-    }
-    .step-card:hover .step-num { color: #e8e8f0; }
-    .step-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .step-card p { font-size: 0.85rem; color: var(--muted); }
-
-    /* ── QUOTES ── */
-    .quotes-section { background: #fff; padding: 4rem 2rem; }
-    .quotes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
-    .quote-card {
-      background: var(--bg2); border: 1.5px solid var(--border); border-radius: var(--r);
-      padding: 1.75rem; position: relative; overflow: hidden;
-      transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
-    }
-    .quote-card:hover { transform: translateY(-3px); border-color: #bbb; box-shadow: 0 10px 32px rgba(0,0,0,0.07); }
-    .quote-mark { font-size: 3rem; color: var(--border); line-height: 0.5; margin-bottom: 1rem; font-family: Georgia, serif; }
-    .quote-card p { font-size: 0.95rem; font-weight: 600; color: var(--text); line-height: 1.5; font-style: italic; }
-
-    /* ── COLLAB ── */
-    .collab-section { background: var(--bg2); }
-    .collab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
-    .collab-card {
-      background: #fff; border: 1.5px solid var(--border); border-radius: var(--r); padding: 2rem;
-      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
-    }
-    .collab-card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,0,0,0.08); border-color: #ccc; }
-    .collab-card.highlight { background: var(--text); color: #fff; border-color: var(--text); }
-    .collab-card.highlight p, .collab-card.highlight .collab-list li { color: rgba(255,255,255,0.65); }
-    .collab-header { display: flex; align-items: flex-start; gap: 0.9rem; margin-bottom: 1rem; }
-    .collab-icon { font-size: 1.6rem; line-height: 1; }
-    .collab-card h3 { font-size: 1.1rem; font-weight: 800; }
-    .collab-tag {
-      font-size: 0.66rem; font-weight: 700; padding: 0.2rem 0.6rem;
-      border-radius: var(--r); text-transform: uppercase; display: inline-block; margin-top: 0.3rem;
-    }
-    .tag-traditional { background: #f0f0f5; color: var(--muted); }
-    .tag-innovative { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); }
-    .collab-card p { font-size: 0.875rem; color: var(--muted); margin-bottom: 1.25rem; }
-    .collab-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .collab-list li { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.85rem; color: var(--muted); }
-
-    /* ── CTA ── */
-    .cta-section { background: var(--bg2); text-align: center; padding: 7rem 2rem; }
-    .cta-section h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: -1.5px; }
-    .cta-section > .container > p { color: var(--muted); font-size: 1.05rem; margin: 1rem auto 2.5rem; max-width: 500px; }
-    .cta-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
-    .btn-wa {
-      background: #25d366; color: #fff; padding: 0.9rem 2.2rem;
-      border-radius: var(--r); font-size: 0.95rem; font-weight: 700;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 0.6rem;
-      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
-      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
-    }
-    .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,211,102,0.45); }
-
-    /* ── RUTA ── */
-    .ruta-section { background: #fff; }
-    .ruta-top {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-bottom: 4rem;
-    }
-    .ruta-top > div { min-width: 0; overflow: hidden; }
-    .ruta-desc p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; overflow-wrap: anywhere; }
-    .ruta-badge-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.5rem; }
-    .ruta-badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: #f0fdf8; border: 1.5px solid #c6f0de; color: var(--green);
-      padding: 0.45rem 1rem; border-radius: var(--r);
-      font-size: 0.8rem; font-weight: 700;
-    }
-    .ruta-badge.gray { background: var(--bg2); border-color: var(--border); color: var(--muted); }
-
-    /* pricing table */
-    .price-table { width: 100%; border-collapse: collapse; margin-top: 0; }
-    .price-table thead tr { border-bottom: 2px solid var(--text); }
-    .price-table thead th { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text); padding: 0.75rem 0; text-align: left; }
-    .price-table thead th:last-child { text-align: right; }
-    .price-table tbody tr {
-      border-bottom: 1px solid var(--border);
-      transition: background 0.2s var(--ease);
-    }
-    .price-table tbody tr:last-child { border-bottom: none; }
-    .price-table tbody tr:hover { background: var(--bg2); }
-    .price-table td { padding: 1.1rem 0; font-size: 0.9rem; vertical-align: middle; }
-    .price-table td:first-child { font-weight: 600; color: var(--text); padding-right: 1rem; }
-    .price-table td:last-child { text-align: right; font-weight: 800; font-size: 1rem; color: var(--text); white-space: nowrap; }
-    .price-table tr.pack-row td { color: var(--text); }
-    .price-table tr.pack-row td:first-child { font-weight: 800; }
-    .price-table tr.pack-row td:last-child { font-size: 1.1rem; }
-
-    .ruta-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 2rem; flex-wrap: wrap;
-      background: var(--bg2); border: 1.5px solid var(--border);
-      border-radius: var(--r); padding: 1.75rem 2rem; margin-top: 3rem;
-    }
-    .ruta-footer-left { display: flex; align-items: center; gap: 1rem; }
-    .ruta-footer-icon { font-size: 2rem; }
-    .ruta-footer h4 { font-size: 1rem; font-weight: 800; margin-bottom: 0.2rem; }
-    .ruta-footer p { font-size: 0.85rem; color: var(--muted); }
-
-    @media (max-width: 768px) {
-      .ruta-top { grid-template-columns: 1fr; gap: 2.5rem; }
-      .ruta-footer { flex-direction: column; align-items: flex-start; }
-      .ruta-footer .btn-dark { width: 100%; text-align: center; }
-      /* price table: scrollable on mobile */
-      .price-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .price-table { min-width: 480px; }
-    }
-
-    /* ── HAMBURGER ── */
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; padding: 4px; background: none; border: none;
-    }
-    .hamburger span {
-      display: block; width: 22px; height: 2px; background: var(--text);
-      border-radius: 2px; transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
+    /* HAMBURGER */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); }
     .mobile-menu {
-      display: none; position: fixed; top: 57px; left: 0; right: 0; z-index: 99;
-      background: rgba(255,255,255,0.97); backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      flex-direction: column; padding: 1.25rem 1.5rem 1.5rem;
-      gap: 0.25rem;
+      display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
+      background: #fff; border-bottom: 1px solid var(--border);
+      flex-direction: column; padding: 1.5rem 2rem 2rem; gap: 0.75rem;
     }
     .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      color: var(--text); text-decoration: none; font-size: 1rem; font-weight: 600;
-      padding: 0.75rem 0; border-bottom: 1px solid var(--border);
-      transition: color 0.2s;
+    .mobile-menu a { color: var(--text); text-decoration: none; font-size: 1.1rem; font-weight: 800; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+    .mobile-menu .mob-cta { background: var(--roam); color: #fff; border-radius: var(--pill); padding: 0.9rem; text-align: center; font-weight: 800; }
+
+    /* ── SECCIONES COMUNES ── */
+    section { padding: 6.5rem 3rem; }
+    .container { max-width: 1240px; margin: 0 auto; width: 100%; }
+
+    .nike-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 0.92;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 1rem;
     }
-    .mobile-menu a:last-child { border-bottom: none; margin-top: 0.5rem; }
-    .mobile-menu .mob-cta {
-      background: var(--text); color: #fff; border-radius: var(--r);
-      padding: 0.8rem; text-align: center; font-weight: 700;
+    .nike-h2 span.terracota { color: var(--roam); }
+    .nike-sub {
+      font-size: 1.15rem; color: var(--text-muted); max-width: 620px; line-height: 1.6; font-weight: 500;
+    }
+    .text-center { text-align: center; }
+    .text-center .nike-sub { margin-left: auto; margin-right: auto; }
+
+    /* ── 1. PORTADA PRINCIPAL ── */
+    .hero-section {
+      padding: 4rem 3rem 5.5rem; background: #fff;
+    }
+    .hero-banner-card {
+      background: var(--bg-alt); border-radius: var(--r-card); overflow: hidden;
+      display: grid; grid-template-columns: 1.1fr 1fr; align-items: center;
+      min-height: 560px;
+    }
+    .hero-content {
+      padding: 4.5rem 4rem; display: flex; flex-direction: column; align-items: flex-start;
+    }
+    .hero-tag {
+      font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--roam); margin-bottom: 1.2rem; display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .hero-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 7.5vw, 6.2rem);
+      line-height: 0.88;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .hero-h1 span.terracota { color: var(--roam); }
+    .hero-lead {
+      font-size: 1.15rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 2.2rem; max-width: 480px; font-weight: 500;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-image-wrap {
+      height: 100%; width: 100%; min-height: 480px; position: relative;
+    }
+    .hero-image-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .hero-photo-badge {
+      position: absolute; bottom: 1.5rem; right: 1.5rem;
+      background: rgba(17, 17, 17, 0.85); backdrop-filter: blur(8px); color: #fff;
+      padding: 0.4rem 0.9rem; border-radius: var(--pill); font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
     }
 
-    /* ── FOOTER ── */
-    footer { background: var(--text); color: rgba(255,255,255,0.6); padding: 3rem 2rem; text-align: center; }
-    .footer-logo { font-size: 1.6rem; font-weight: 900; color: #fff; margin-bottom: 0.6rem; }
-    .footer-desc { font-size: 0.85rem; max-width: 400px; margin: 0 auto 1.5rem; }
-    .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    /* ── 2. CINTA DE HOTELES ── */
+    .ticker-bar {
+      background: var(--text); color: #fff; padding: 1.2rem 0; overflow: hidden;
+    }
+    .ticker-track { display: flex; animation: marquee 30s linear infinite; width: max-content; }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .ticker-item {
+      font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 1.5px;
+      text-transform: uppercase; margin: 0 1.5rem; white-space: nowrap; display: flex; align-items: center; gap: 1.5rem;
+    }
+    .ticker-item span.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--roam); display: inline-block; }
+
+    /* ── 3. FRASE PRINCIPAL ── */
+    .manifesto-section {
+      background: var(--bg-alt); padding: 7rem 3rem; text-align: center;
+    }
+    .man-tag {
+      font-size: 0.82rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--roam); margin-bottom: 1.2rem; display: block;
+    }
+    .man-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+      line-height: 0.92;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      max-width: 980px;
+      margin: 0 auto 1.5rem;
+      color: var(--text);
+    }
+    .man-desc {
+      font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 2.5rem; line-height: 1.65; font-weight: 500;
+    }
+    .man-chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; }
+    .man-chip {
+      background: #fff; border: 1px solid var(--border); padding: 0.5rem 1.2rem;
+      border-radius: var(--pill); font-size: 0.84rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .man-chip.neg { color: #aaa; text-decoration: line-through; }
+    .man-chip.win { background: var(--roam); color: #fff; border-color: var(--roam); }
+
+    /* ── 4. CÓMO FUNCIONA EN 4 PASOS ── */
+    .how-section { background: #fff; }
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem;
+    }
+    .step-card {
+      background: var(--bg-alt); border-radius: var(--r-card); padding: 2.5rem 2rem;
+      display: flex; flex-direction: column; transition: transform 0.25s var(--ease), background 0.25s;
+    }
+    .step-card:hover { transform: translateY(-4px); background: #eee; }
+    .step-num {
+      font-family: var(--font-display); font-size: 3.8rem; line-height: 0.9;
+      color: var(--roam); margin-bottom: 1rem;
+    }
+    .step-title {
+      font-family: var(--font-display); font-size: 1.7rem; line-height: 1;
+      letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 0.6rem;
+    }
+    .step-text {
+      font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; font-weight: 500;
+    }
+
+    /* ── 5. PAQUETES DE NOCHES ── */
+    .packages-section { background: var(--bg-alt); }
+    .packages-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem;
+      align-items: stretch;
+    }
+    .pack-card {
+      background: #fff; border-radius: var(--r-card); overflow: hidden;
+      display: flex; flex-direction: column; border: 2px solid transparent;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.25s var(--ease), border-color 0.25s, box-shadow 0.25s;
+    }
+    .pack-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    }
+    .pack-card.featured {
+      border-color: var(--roam);
+    }
+    
+    .pack-img-wrap {
+      width: 100%; height: 240px; position: relative; overflow: hidden; background: #333;
+    }
+    .pack-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.4s var(--ease);
+    }
+    .pack-card:hover .pack-img-wrap img { transform: scale(1.05); }
+
+    .pack-badge {
+      position: absolute; top: 1rem; left: 1rem;
+      background: var(--roam); color: #fff; padding: 0.35rem 0.9rem;
+      border-radius: var(--pill); font-size: 0.72rem; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    .pack-body { padding: 2.2rem 2rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .pack-nights-title {
+      font-family: var(--font-display); font-size: 3.2rem; line-height: 0.9;
+      letter-spacing: 0.5px; text-transform: uppercase; color: var(--text); margin-bottom: 0.25rem;
+    }
+    .pack-sub-name {
+      font-size: 0.85rem; font-weight: 800; color: var(--roam); text-transform: uppercase;
+      letter-spacing: 0.06em; margin-bottom: 1.5rem;
+    }
+
+    .pack-bonus-box {
+      background: var(--roam-soft); border-left: 3px solid var(--roam);
+      padding: 0.8rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 700;
+      color: var(--roam-dark); margin-bottom: 1.5rem; line-height: 1.4;
+    }
+
+    .pack-list-title {
+      font-size: 0.75rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.85rem;
+    }
+    .pack-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem; flex-grow: 1; }
+    .pack-list li {
+      font-size: 0.94rem; color: var(--text); font-weight: 600; display: flex; align-items: flex-start; gap: 0.6rem;
+    }
+    .pack-list li span.dot { color: var(--roam); font-size: 1.1rem; line-height: 1; }
+
+    /* ── 6. QUIÉNES SOMOS ── */
+    .team-section { background: #fff; }
+    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 4rem; }
+    .team-card {
+      background: var(--bg-alt); border-radius: var(--r-card); overflow: hidden;
+      display: grid; grid-template-columns: 200px 1fr; align-items: stretch;
+    }
+    .team-img-wrap { width: 100%; height: 100%; min-height: 240px; }
+    .team-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .team-info { padding: 2.2rem 2rem; display: flex; flex-direction: column; justify-content: center; }
+    .team-name {
+      font-family: var(--font-display); font-size: 2.4rem; line-height: 0.9;
+      letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 0.3rem;
+    }
+    .team-role {
+      font-size: 0.82rem; font-weight: 800; color: var(--roam); text-transform: uppercase;
+      letter-spacing: 0.06em; margin-bottom: 1rem;
+    }
+    .team-desc {
+      font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; font-weight: 500;
+    }
+
+    /* ── 7. ROAM GROW (DESPUÉS DE LA ESTANCIA) ── */
+    .grow-section { background: var(--bg-alt); }
+    .grow-box {
+      background: #fff; border-radius: var(--r-card); padding: 4rem;
+    }
+    .grow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .grow-item {
+      background: var(--bg-alt); border-radius: 12px; padding: 1.8rem;
+    }
+    .grow-item h4 {
+      font-family: var(--font-display); font-size: 1.6rem; line-height: 1; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .grow-item p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; font-weight: 500; }
+
+    /* ── 8. PREGUNTAS FRECUENTES ── */
+    .faq-section { background: #fff; }
+    .faq-list { max-width: 860px; margin: 3.5rem auto 0; display: flex; flex-direction: column; gap: 0.85rem; }
+    .faq-item {
+      background: var(--bg-alt); border-radius: 12px; overflow: hidden;
+    }
+    .faq-question {
+      padding: 1.4rem 2rem; font-size: 1.05rem; font-weight: 800;
+      color: var(--text); display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; user-select: none;
+    }
+    .faq-icon {
+      font-size: 1.5rem; font-weight: 400; color: var(--roam);
+      transition: transform 0.25s var(--ease);
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--text); }
+    .faq-answer {
+      display: none; padding: 0 2rem 1.5rem; font-size: 0.96rem; color: var(--text-muted);
+      line-height: 1.65; font-weight: 500;
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* ── 9. CTA FINAL DIRECTO ── */
+    .cta-section {
+      background: var(--text); color: #fff; text-align: center; padding: 7rem 3rem;
+    }
+    .cta-tag {
+      font-size: 0.82rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--roam); margin-bottom: 1.2rem; display: block;
+    }
+    .cta-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.9;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .cta-lead {
+      font-size: 1.15rem; color: #aaa; max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.65; font-weight: 500;
+    }
+
+    /* ── PIE DE PÁGINA ── */
+    footer {
+      background: #000; color: #777; padding: 4rem 3rem 3rem; font-size: 0.85rem;
+    }
+    .footer-inner {
+      max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;
+    }
+    .footer-logo {
+      font-family: var(--font-display); font-size: 2rem; color: #fff; letter-spacing: 1px;
+    }
+    .footer-logo span { color: var(--roam); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { color: #aaa; text-decoration: none; font-weight: 700; }
     .footer-links a:hover { color: #fff; }
-    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .method-grid { grid-template-columns: repeat(2, 1fr); }
-      .novacc-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-      .authority-grid { grid-template-columns: repeat(3, 1fr); }
-      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    /* ── MÓVIL ── */
+    @media (max-width: 992px) {
+      .hero-banner-card { grid-template-columns: 1fr; }
+      .hero-content { padding: 3rem 2rem; }
+      .hero-image-wrap { min-height: 340px; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .packages-grid { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+      .team-grid { grid-template-columns: 1fr; }
     }
-    @media (max-width: 640px) {
-      /* nav */
-      nav { padding: 0.8rem 1rem; gap: 0.5rem; }
-      .nav-links { display: none; }
-      .nav-cta { display: none; }
+    @media (max-width: 768px) {
+      .top-bar { display: none; }
+      nav { padding: 1rem 1.25rem; }
+      .nav-links, .nav-right .btn-pill-roam { display: none; }
       .hamburger { display: flex; }
-
-      /* layout */
-      section { padding: 3.5rem 1rem; }
-      .container { width: 100%; padding: 0; }
-      .positioning-section { padding: 3rem 1rem; }
-      .trusted-section { padding: 2rem 0; }
-
-      /* hero */
-      .hero { padding: 7rem 1rem 3.5rem; }
-      .fi { display: none; }
-      .hero h1 { letter-spacing: -1px; }
-      .hero p { font-size: 1rem; }
-      .hero-btns { flex-direction: column; align-items: stretch; width: 100%; }
-      .hero-btns a { text-align: center; }
-
-      /* method */
-      .method-grid { grid-template-columns: 1fr 1fr; }
-      .method-card { padding: 1.5rem 1rem; }
-      .method-letter { font-size: 3rem; }
-
-      /* authority */
-      .authority-grid { grid-template-columns: 1fr; gap: 2rem; }
-
-      /* steps */
+      section { padding: 4rem 1.25rem; }
+      .hero-section { padding: 2rem 1.25rem 3.5rem; }
+      .hero-h1 { font-size: 3.2rem; }
+      .hero-btns { flex-direction: column; width: 100%; }
+      .hero-btns a { width: 100%; text-align: center; }
       .steps-grid { grid-template-columns: 1fr; }
-
-      /* quotes */
-      .quotes-grid { grid-template-columns: 1fr; }
-
-      /* novacc */
-      .novacc-headline { font-size: clamp(1.75rem, 7vw, 2.5rem); }
-      .novacc-right p { font-size: 0.95rem; }
-
-      /* problems */
-      .prob-text { font-size: 0.875rem; }
-      .prob-emoji { display: none; }
-
-      /* ruta */
-      .ruta-section { padding: 3.5rem 1rem; }
-      .ruta-top { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
-      .ruta-desc p { font-size: 0.9rem; word-break: break-word; }
-      .ruta-badge-row { flex-direction: column; gap: 0.5rem; }
-      .ruta-badge { width: 100%; justify-content: center; }
-      .ruta-footer { flex-direction: column; align-items: stretch; padding: 1.25rem; }
-      .ruta-footer .btn-dark { text-align: center; }
-      .price-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: var(--r); max-width: 100%; }
-      .price-table { min-width: 340px; width: 100%; }
-      .price-table td:first-child { font-size: 0.82rem; }
-      .price-table td:last-child { font-size: 0.92rem; padding-left: 0.5rem; }
-
-      /* cta */
-      .cta-section { padding: 4rem 1rem; }
-      .cta-btns { flex-direction: column; align-items: stretch; }
-      .cta-btns a { text-align: center; justify-content: center; }
-
-      /* footer */
-      .footer-links { gap: 0.75rem; }
-      footer { padding: 2.5rem 1rem; }
-    }
-    @media (max-width: 400px) {
-      .method-grid { grid-template-columns: 1fr; }
-      .authority-grid { grid-template-columns: 1fr; }
+      .team-card { grid-template-columns: 1fr; }
+      .grow-box { padding: 2rem 1.25rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- BARRA SUPERIOR -->
+<div class="top-bar">
+  <span>ROAM HOTELES · NOS ALOJAS Y TE HACEMOS FOTOS Y VÍDEOS BONITOS</span>
+  <div class="top-bar-links">
+    <a href="roam-ai.html">¿Tienes ya fotos? Ver Roam AI →</a>
+    <a href="https://wa.me/34601108311" target="_blank">WhatsApp Directo</a>
+  </div>
+</div>
+
+<!-- MENÚ PRINCIPAL -->
 <nav>
-  <div class="logo">Roam</div>
-  <ul class="nav-links">
-    <li><a href="#que-conseguir">Qué ofrecemos</a></li>
-    <li><a href="#metodo">Método</a></li>
-    <li><a href="#como-funciona">Cómo funciona</a></li>
-    <li><a href="#ruta">Nuestra ruta</a></li>
-  </ul>
-  <a href="https://wa.me/34601108311" class="nav-cta" target="_blank">Quiero colaborar</a>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-left">
+    <a href="index.html" class="logo-wrap">
+      <div class="logo">ROAM<span>.</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#como-funciona">Cómo Funciona</a></li>
+      <li><a href="#paquetes">Noches</a></li>
+      <li><a href="#quienes-somos">Quiénes Somos</a></li>
+      <li><a href="#roam-grow">Después del Viaje</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+    </ul>
+  </div>
+
+  <div class="nav-right">
+    <a href="roam-ai.html" class="nav-ai-pill">Roam AI →</a>
+    <a href="https://wa.me/34601108311?text=Hola%20Pau%20y%20Michelle,%20quiero%20colaborar%20con%20Roam%20Hoteles" class="btn-pill-roam" target="_blank">
+      Quiero Colaborar
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- MENÚ MÓVIL -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#que-conseguir" onclick="closeMob()">Qué ofrecemos</a>
-  <a href="#metodo" onclick="closeMob()">Método ROAM</a>
-  <a href="#como-funciona" onclick="closeMob()">Cómo funciona</a>
-  <a href="#ruta" onclick="closeMob()">Nuestra ruta</a>
-  <a href="https://wa.me/34601108311" class="mob-cta" target="_blank">Quiero colaborar con Roam</a>
+  <a href="#como-funciona" onclick="closeMob()">Cómo Funciona</a>
+  <a href="#paquetes" onclick="closeMob()">Paquetes de Noches</a>
+  <a href="#quienes-somos" onclick="closeMob()">Quiénes Somos</a>
+  <a href="#roam-grow" onclick="closeMob()">Después del Viaje</a>
+  <a href="#faq" onclick="closeMob()">Preguntas Frecuentes</a>
+  <a href="roam-ai.html" style="color:var(--roam);font-weight:800" onclick="closeMob()">Roam AI (Internet y Tecnología)</a>
+  <a href="https://wa.me/34601108311?text=Hola%20Pau%20y%20Michelle,%20quiero%20colaborar%20con%20Roam%20Hoteles" class="mob-cta" target="_blank">
+    💬 Hablar por WhatsApp
+  </a>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="floats" aria-hidden="true">
-    <div class="fi" style="width:64px;height:64px;top:12%;left:7%;--rot:-8deg;animation-duration:6s;animation-delay:0s">🏨</div>
-    <div class="fi" style="width:50px;height:50px;top:22%;left:17%;--rot:5deg;animation-duration:8s;animation-delay:-2s">🤖</div>
-    <div class="fi" style="width:70px;height:70px;top:8%;left:82%;--rot:10deg;animation-duration:7s;animation-delay:-1s">⭐</div>
-    <div class="fi" style="width:56px;height:56px;top:30%;left:90%;--rot:-6deg;animation-duration:9s;animation-delay:-3s">📱</div>
-    <div class="fi" style="width:48px;height:48px;top:65%;left:5%;--rot:12deg;animation-duration:7.5s;animation-delay:-1.5s">💡</div>
-    <div class="fi" style="width:64px;height:64px;top:72%;left:88%;--rot:-4deg;animation-duration:6.5s;animation-delay:-4s">🌍</div>
-    <div class="fi" style="width:52px;height:52px;top:50%;left:3%;--rot:7deg;animation-duration:8.5s;animation-delay:-2.5s">💬</div>
-    <div class="fi" style="width:46px;height:46px;top:80%;left:20%;--rot:-9deg;animation-duration:9s;animation-delay:-0.5s">🔑</div>
-    <div class="fi" style="width:58px;height:58px;top:78%;left:75%;--rot:6deg;animation-duration:7s;animation-delay:-3.5s">📸</div>
-    <div class="fi" style="width:44px;height:44px;top:15%;left:72%;--rot:-11deg;animation-duration:8s;animation-delay:-1s">⚡</div>
-  </div>
+<!-- 1. PORTADA PRINCIPAL -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-banner-card reveal">
+      <div class="hero-content">
+        <span class="hero-tag">● Intercambio Sencillo</span>
+        <h1 class="hero-h1">
+          TU HOTEL NOS ALOJA.<br />
+          HACEMOS QUE <span class="terracota">SE VEA MEJOR.</span>
+        </h1>
+        <p class="hero-lead">
+          Nos quedamos unos días en tu hotel. A cambio, te hacemos fotos profesionales, vídeos para internet y te ayudamos a usar tecnología fácil para tu negocio.
+        </p>
+        <div class="hero-btns">
+          <a href="https://wa.me/34601108311?text=Hola%20Pau%20y%20Michelle,%20quiero%20proponer%20una%20colaboracion%20con%20mi%20hotel" class="btn-pill-roam" target="_blank" style="padding:0.95rem 2.2rem;font-size:0.95rem">
+            Quiero Colaborar
+          </a>
+          <a href="#paquetes" class="btn-pill-outline">
+            Ver las Noches
+          </a>
+        </div>
+      </div>
 
-  <div class="hero-badge reveal">🛏️ Intercambio inteligente para hoteles</div>
-  <h1 class="reveal reveal-delay-1">Convierte habitaciones libres<br/>en <em>innovación</em> para tu hotel</h1>
-  <p class="reveal reveal-delay-2">Ayudamos a hoteles y hostales a resolver problemas reales con inteligencia artificial, formación tecnológica y contenido profesional. A cambio, trabajamos mediante noches de alojamiento.</p>
-  <div class="hero-btns reveal reveal-delay-3">
-    <a href="https://wa.me/34601108311" class="btn-dark" target="_blank">Quiero colaborar con Roam</a>
-    <a href="#que-conseguir" class="btn-outline">Ver qué ofrecemos</a>
+      <div class="hero-image-wrap">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85" alt="Hotel bonito" />
+        <div class="hero-photo-badge">Fotos y Vídeos Reales</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- TRUSTED BY -->
-<div class="trusted-section">
-  <p class="trusted-label">Hoteles y hostels que ya confían en nosotros</p>
-  <div class="marquee-wrapper">
-    <div class="marquee-track">
-      <span class="hotel-pill"><span class="dot"></span>Viajero Hostels</span>
-      <span class="hotel-pill"><span class="dot"></span>Cada Chapolin</span>
-      <span class="hotel-pill"><span class="dot"></span>Masaya Hostels</span>
-      <span class="hotel-pill"><span class="dot"></span>Marriott Mazatlán</span>
-      <span class="hotel-pill"><span class="dot"></span>Hostal Auditorio</span>
-      <span class="hotel-pill"><span class="dot"></span>Los Patios Medellín</span>
-      <span class="hotel-pill"><span class="dot"></span>La Controra Nápoles</span>
-      <span class="hotel-pill"><span class="dot"></span>Blablabla Bari</span>
-      <span class="hotel-pill"><span class="dot"></span>Ryad Layla Rouge</span>
-      <span class="hotel-pill"><span class="dot"></span>Los Amigos Nest</span>
-      <span class="hotel-pill"><span class="dot"></span>Font Andorra Hotel</span>
-      <span class="hotel-pill"><span class="dot"></span>Fira Backpackers</span>
-      <span class="hotel-pill"><span class="dot"></span>Ostello Bello</span>
-      <span class="hotel-pill"><span class="dot"></span>Intercontinental Medellín</span>
-      <span class="hotel-pill"><span class="dot"></span>Viajero Hostels</span>
-      <span class="hotel-pill"><span class="dot"></span>Cada Chapolin</span>
-      <span class="hotel-pill"><span class="dot"></span>Masaya Hostels</span>
-      <span class="hotel-pill"><span class="dot"></span>Marriott Mazatlán</span>
-      <span class="hotel-pill"><span class="dot"></span>Hostal Auditorio</span>
-      <span class="hotel-pill"><span class="dot"></span>Los Patios Medellín</span>
-      <span class="hotel-pill"><span class="dot"></span>La Controra Nápoles</span>
-      <span class="hotel-pill"><span class="dot"></span>Blablabla Bari</span>
-      <span class="hotel-pill"><span class="dot"></span>Ryad Layla Rouge</span>
-      <span class="hotel-pill"><span class="dot"></span>Los Amigos Nest</span>
-      <span class="hotel-pill"><span class="dot"></span>Font Andorra Hotel</span>
-      <span class="hotel-pill"><span class="dot"></span>Fira Backpackers</span>
-      <span class="hotel-pill"><span class="dot"></span>Ostello Bello</span>
-      <span class="hotel-pill"><span class="dot"></span>Intercontinental Medellín</span>
-    </div>
+<!-- 2. HOTELES DONDE HEMOS ESTADO -->
+<div class="ticker-bar">
+  <div class="ticker-track">
+    <div class="ticker-item">MARRIOTT MAZATLÁN <span class="dot"></span></div>
+    <div class="ticker-item">VIAJERO HOSTELS <span class="dot"></span></div>
+    <div class="ticker-item">LOS PATIOS MEDELLÍN <span class="dot"></span></div>
+    <div class="ticker-item">CADA CHAPOLIN <span class="dot"></span></div>
+    <div class="ticker-item">HOSTAL AUDITORIO <span class="dot"></span></div>
+    <div class="ticker-item">MASAYA HOSTELS <span class="dot"></span></div>
+    <div class="ticker-item">LA CONTRORA NÁPOLES <span class="dot"></span></div>
+    <div class="ticker-item">FONT ANDORRA HOTEL <span class="dot"></span></div>
+    <!-- Repetición para el carrusel -->
+    <div class="ticker-item">MARRIOTT MAZATLÁN <span class="dot"></span></div>
+    <div class="ticker-item">VIAJERO HOSTELS <span class="dot"></span></div>
+    <div class="ticker-item">LOS PATIOS MEDELLÍN <span class="dot"></span></div>
+    <div class="ticker-item">CADA CHAPOLIN <span class="dot"></span></div>
+    <div class="ticker-item">HOSTAL AUDITORIO <span class="dot"></span></div>
+    <div class="ticker-item">MASAYA HOSTELS <span class="dot"></span></div>
+    <div class="ticker-item">LA CONTRORA NÁPOLES <span class="dot"></span></div>
+    <div class="ticker-item">FONT ANDORRA HOTEL <span class="dot"></span></div>
   </div>
 </div>
 
-<!-- POSITIONING -->
-<div class="positioning-section">
+<!-- 3. MENSAJE CLARO -->
+<div class="manifesto-section">
   <div class="container">
-    <div class="pos-tag reveal">Posicionamiento</div>
-    <p class="reveal reveal-delay-1">
-      <strong>Roam no es una colaboración de influencers.</strong>
-      <span class="pos-sep"></span>
-      Es un <strong>intercambio inteligente</strong> para hoteles.
-      <span class="pos-sep"></span>
-      Tú nos das alojamiento.<br/>
-      Nosotros te dejamos <strong>tecnología, contenido y soluciones aplicables.</strong>
+    <span class="man-tag">Nuestra Idea</span>
+    <h2 class="man-h2 reveal">
+      NO SOMOS INFLUENCERS.<br />
+      SOMOS DOS PERSONAS QUE AYUDAN A QUE TU HOTEL SE VEA INCREÍBLE.
+    </h2>
+    <p class="man-desc reveal reveal-delay-1">
+      Tú pones una habitación que tienes libre. Nosotros ponemos nuestro trabajo: fotos bonitas, vídeos para redes sociales y ayuda con internet. Sin pagar dinero, solo intercambio.
     </p>
+    <div class="man-chips reveal reveal-delay-2">
+      <span class="man-chip neg">Agencias caras</span>
+      <span class="man-chip neg">Influencers pidiendo gratis</span>
+      <span class="man-chip win">✓ Intercambio directo y justo</span>
+    </div>
   </div>
 </div>
 
-<!-- QUÉ PUEDE CONSEGUIR TU HOTEL -->
-<section class="services-section" id="que-conseguir">
-  <div class="container">
-    <div class="section-label reveal">Lo que obtienes</div>
-    <h2 class="section-title reveal reveal-delay-1">¿Qué puede conseguir tu hotel?</h2>
-    <p class="section-sub reveal reveal-delay-2">Cinco áreas donde Roam puede generar valor real para tu alojamiento.</p>
-    <div class="services-grid">
-      <div class="svc-card reveal reveal-delay-1">
-        <span class="svc-icon">🧠</span>
-        <h3>Formación en IA para tu equipo</h3>
-        <p>Enseñamos a recepción, marketing o dirección a usar herramientas de IA de forma práctica y aplicada al día a día del hotel.</p>
-      </div>
-      <div class="svc-card reveal reveal-delay-2">
-        <span class="svc-icon">⚡</span>
-        <h3>Automatizaciones sencillas</h3>
-        <p>Creamos sistemas para ahorrar tiempo en mensajes, reservas, reseñas, respuestas o tareas repetitivas que consumen horas cada semana.</p>
-      </div>
-      <div class="svc-card reveal reveal-delay-3">
-        <span class="svc-icon">📸</span>
-        <h3>Contenido profesional</h3>
-        <p>Grabamos vídeos, fotos, reels o piezas creativas para mejorar la imagen del hotel y atraer más huéspedes desde las redes.</p>
-      </div>
-      <div class="svc-card reveal reveal-delay-1">
-        <span class="svc-icon">🔍</span>
-        <h3>Análisis de oportunidades</h3>
-        <p>Revisamos reseñas, redes, web y comunicación para detectar mejoras rápidas que tienen impacto inmediato en la percepción del hotel.</p>
-      </div>
-      <div class="svc-card reveal reveal-delay-2">
-        <span class="svc-icon">🛠️</span>
-        <h3>Soluciones personalizadas</h3>
-        <p>Cada hotel tiene problemas diferentes. Roam adapta la solución al alojamiento, sin plantillas genéricas ni propuestas de copia y pega.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- NO VENIMOS DE VACACIONES -->
-<section class="novacc-section">
-  <div class="container">
-    <div class="novacc-inner">
-      <div>
-        <div class="section-label reveal">La diferencia</div>
-        <div class="novacc-headline reveal reveal-delay-1">
-          <span class="cross">No venimos de vacaciones.</span>
-          <span class="bold">Venimos a dejar valor.</span>
-        </div>
-      </div>
-      <div class="novacc-right reveal reveal-delay-2">
-        <p>Dormimos en tu hotel, <strong>analizamos tus oportunidades</strong> y trabajamos contigo para mejorar procesos, comunicación, contenido o tecnología.</p>
-        <p>No entregamos promesas. Entregamos <strong>resultados concretos y medibles</strong> antes de hacer la maleta.</p>
-        <div class="novacc-pills">
-          <span class="pill">Equipo formado</span>
-          <span class="pill">Contenido creado</span>
-          <span class="pill">Procesos mejorados</span>
-          <span class="pill">Sistemas listos</span>
-          <span class="pill">Soluciones aplicadas</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MÉTODO ROAM -->
-<section class="method-section" id="metodo">
-  <div class="container">
-    <div class="text-center">
-      <div class="section-label reveal">Metodología</div>
-      <h2 class="section-title reveal reveal-delay-1">El Método ROAM</h2>
-      <p class="section-sub reveal reveal-delay-2">Cuatro fases que convierten noches de alojamiento en soluciones reales.</p>
-    </div>
-    <div class="method-grid reveal reveal-delay-1">
-      <div class="method-card">
-        <div class="method-letter">R</div>
-        <h3>Revisamos problemas</h3>
-        <p>Analizamos reservas, contenido, atención al cliente, reseñas, redes, procesos internos y formación del equipo.</p>
-      </div>
-      <div class="method-card">
-        <div class="method-letter">O</div>
-        <h3>Ordenamos oportunidades</h3>
-        <p>Detectamos qué mejoras pueden tener más impacto con menos complejidad. Priorizamos lo que funciona de verdad.</p>
-      </div>
-      <div class="method-card">
-        <div class="method-letter">A</div>
-        <h3>Aplicamos soluciones</h3>
-        <p>Implementamos formación, herramientas de IA, automatizaciones, contenido o sistemas útiles para el hotel.</p>
-      </div>
-      <div class="method-card">
-        <div class="method-letter">M</div>
-        <h3>Medimos valor</h3>
-        <p>Dejamos entregables claros: equipo formado, contenido creado, procesos mejorados o soluciones listas para usar.</p>
-      </div>
-    </div>
-    <p class="method-sub reveal">El Método ROAM convierte noches de alojamiento en soluciones reales para hoteles y hostales.</p>
-  </div>
-</section>
-
-<!-- PROBLEMS -->
-<section class="problems-section" id="problemas">
-  <div class="container">
-    <div class="problems-intro">
-      <div class="section-label reveal">Problemas reales</div>
-      <h2 class="section-title reveal reveal-delay-1">¿Te suena alguno de estos?</h2>
-      <p class="section-sub reveal reveal-delay-2">Si gestionas un hotel o hostal, seguro que más de uno te resulta familiar.</p>
-    </div>
-    <div class="problems-list reveal">
-      <div class="prob-row"><div class="prob-step">01</div><div class="prob-emoji">😰</div><div class="prob-text">Dependencia excesiva de Booking, Airbnb y OTAs</div></div>
-      <div class="prob-row"><div class="prob-step">02</div><div class="prob-emoji">📸</div><div class="prob-text">Poco contenido profesional para redes sociales</div></div>
-      <div class="prob-row"><div class="prob-step">03</div><div class="prob-emoji">⏳</div><div class="prob-text">Respuestas lentas por WhatsApp o email que hacen perder reservas</div></div>
-      <div class="prob-row"><div class="prob-step">04</div><div class="prob-emoji">⭐</div><div class="prob-text">Mal uso de reseñas y opiniones de los clientes</div></div>
-      <div class="prob-row"><div class="prob-step">05</div><div class="prob-emoji">🧠</div><div class="prob-text">Equipo sin formación en nuevas herramientas digitales</div></div>
-      <div class="prob-row"><div class="prob-step">06</div><div class="prob-emoji">📱</div><div class="prob-text">Web o redes que no transmiten bien el valor del hotel</div></div>
-      <div class="prob-row"><div class="prob-step">07</div><div class="prob-emoji">🐌</div><div class="prob-text">Procesos internos repetitivos que consumen demasiado tiempo</div></div>
-      <div class="prob-row"><div class="prob-step">08</div><div class="prob-emoji">👥</div><div class="prob-text">Falta de diferenciación frente a otros hoteles parecidos</div></div>
-      <div class="prob-row"><div class="prob-step">09</div><div class="prob-emoji">🛏️</div><div class="prob-text">Habitaciones vacías que no generan ningún tipo de valor</div></div>
-      <div class="prob-row"><div class="prob-step">10</div><div class="prob-emoji">🤖</div><div class="prob-text">Dificultad para aplicar inteligencia artificial de forma práctica</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- AUTHORITY -->
-<section class="authority-section">
-  <div class="container">
-    <div class="section-label reveal" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7)">Por qué confiar en Roam</div>
-    <h2 class="section-title reveal reveal-delay-1" style="color:#fff;margin-top:0.5rem">Experiencia que respalda cada colaboración</h2>
-    <div class="authority-grid">
-      <div class="auth-stat reveal reveal-delay-1">
-        <div class="auth-num" data-count="7">0</div>
-        <div class="auth-label">años trabajando con inteligencia artificial</div>
-      </div>
-      <div class="auth-stat reveal reveal-delay-2">
-        <div class="auth-num" data-count="75">0</div>
-        <div class="auth-label">países visitados y experiencia internacional</div>
-      </div>
-      <div class="auth-stat reveal reveal-delay-3">
-        <div class="auth-num" data-count="100">0</div>
-        <div class="auth-label">hoteles que han confiado en nosotros</div>
-      </div>
-    </div>
-    <p class="reveal">Viajamos por el mundo ayudando a hoteles y hostales a ser más inteligentes, visibles y modernos.</p>
-  </div>
-</section>
-
-<!-- CÓMO FUNCIONA -->
+<!-- 4. CÓMO FUNCIONA -->
 <section class="how-section" id="como-funciona">
   <div class="container">
-    <div class="section-label reveal">Proceso</div>
-    <h2 class="section-title reveal reveal-delay-1">Cómo funciona</h2>
-    <p class="section-sub reveal reveal-delay-2">Cuatro pasos simples desde el primer contacto hasta los resultados.</p>
+    <div class="text-center">
+      <span class="hero-tag" style="justify-content:center">● Muy Fácil</span>
+      <h2 class="nike-h2 reveal">UNA HABITACIÓN. UN INTERCAMBIO. <span class="terracota">MUCHO VALOR.</span></h2>
+      <p class="nike-sub reveal reveal-delay-1">Todo se explica en 4 pasos sencillos para que no tengas ninguna duda.</p>
+    </div>
+
     <div class="steps-grid">
       <div class="step-card reveal reveal-delay-1">
-        <div class="step-num">1</div>
-        <h3>Analizamos tu hotel</h3>
-        <p>Revisamos tu web, redes, reseñas, comunicación y detectamos oportunidades de mejora reales.</p>
+        <div class="step-num">01</div>
+        <div class="step-title">Nos Recibes</div>
+        <div class="step-text">
+          Nos das una habitación para 2 personas durante los días que acordemos juntos.
+        </div>
       </div>
+
       <div class="step-card reveal reveal-delay-2">
-        <div class="step-num">2</div>
-        <h3>Proponemos una colaboración</h3>
-        <p>Te decimos exactamente qué podemos aportar a cambio de noches de alojamiento. Sin letra pequeña.</p>
+        <div class="step-num">02</div>
+        <div class="step-title">Vivimos Tu Hotel</div>
+        <div class="step-text">
+          Probamos el desayuno, vemos las habitaciones y disfrutamos del lugar como huéspedes reales.
+        </div>
       </div>
+
       <div class="step-card reveal reveal-delay-3">
-        <div class="step-num">3</div>
-        <h3>Nos alojamos y trabajamos</h3>
-        <p>Creamos contenido, damos formación o implementamos soluciones durante la estancia en tu hotel.</p>
-      </div>
-      <div class="step-card reveal reveal-delay-4">
-        <div class="step-num">4</div>
-        <h3>Te dejamos valor real</h3>
-        <p>No entregamos humo. Dejamos contenido, sistemas, ideas o equipo formado antes de salir.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FRASES MEMORABLES -->
-<section class="quotes-section">
-  <div class="container">
-    <div class="text-center" style="margin-bottom:2.5rem">
-      <div class="section-label reveal">Para que no se te olvide</div>
-      <h2 class="section-title reveal reveal-delay-1">Una cama vacía puede pagar<br/>una solución de IA</h2>
-    </div>
-    <div class="quotes-grid">
-      <div class="quote-card reveal reveal-delay-1">
-        <div class="quote-mark">"</div>
-        <p>Una habitación vacía no genera nada. Con Roam puede convertirse en innovación.</p>
-      </div>
-      <div class="quote-card reveal reveal-delay-2">
-        <div class="quote-mark">"</div>
-        <p>Dormimos en tu hotel. Despertamos soluciones.</p>
-      </div>
-      <div class="quote-card reveal reveal-delay-3">
-        <div class="quote-mark">"</div>
-        <p>No pedimos alojamiento. Intercambiamos transformación.</p>
-      </div>
-      <div class="quote-card reveal reveal-delay-1">
-        <div class="quote-mark">"</div>
-        <p>Tú nos das noches. Nosotros te damos futuro.</p>
-      </div>
-      <div class="quote-card reveal reveal-delay-2">
-        <div class="quote-mark">"</div>
-        <p>Si tienes camas libres, tienes presupuesto escondido.</p>
-      </div>
-      <div class="quote-card reveal reveal-delay-3">
-        <div class="quote-mark">"</div>
-        <p>No somos influencers. Somos el equipo de innovación que tu hotel nunca contrató.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- HOTELES EN NUESTRA RUTA -->
-<section class="ruta-section" id="ruta">
-  <div class="container">
-    <div class="section-label reveal">Disponibilidad</div>
-    <h2 class="section-title reveal reveal-delay-1">Hoteles en nuestra ruta</h2>
-
-    <div class="ruta-top">
-      <div class="ruta-desc reveal reveal-delay-2">
-        <p>Estamos viajando por el mundo ayudando a hoteles y hostales a aplicar IA, mejorar su contenido y resolver problemas reales.</p>
-        <p>Cuando un hotel está dentro de nuestra ruta, abrimos un número limitado de colaboraciones mediante intercambio por alojamiento.</p>
-        <p>Eso significa que, si pasamos por tu ciudad, puedes acceder a Roam <strong>sin pagar dinero</strong>: solo ofreciendo noches de hospedaje.</p>
-        <p style="color:var(--text);font-weight:600">Fuera de nuestra ruta, estos servicios se ofrecen como consultoría privada.</p>
-        <div class="ruta-badge-row">
-          <span class="ruta-badge">✈️ En ruta → intercambio</span>
-          <span class="ruta-badge gray">🌐 Fuera de ruta → consultoría</span>
+        <div class="step-num">03</div>
+        <div class="step-title">Hacemos Fotos y Vídeos</div>
+        <div class="step-text">
+          Grabamos vídeos para el móvil, hacemos fotos luminosas y vemos qué cosas se pueden mejorar.
         </div>
       </div>
 
-      <div class="reveal reveal-delay-3">
-        <p style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--light);margin-bottom:1rem">Precios fuera de ruta</p>
-        <div class="price-table-wrap"><table class="price-table">
-          <thead>
-            <tr>
-              <th>Servicio</th>
-              <th>Precio</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Diagnóstico de IA y oportunidades del hotel</td>
-              <td>750 €</td>
-            </tr>
-            <tr>
-              <td>Formación privada en IA para el equipo</td>
-              <td>3.500 €</td>
-            </tr>
-            <tr>
-              <td>Creación de contenido profesional para redes</td>
-              <td>2.000 €</td>
-            </tr>
-            <tr>
-              <td>Automatización simple para atención o procesos</td>
-              <td>7.500 €</td>
-            </tr>
-            <tr class="pack-row">
-              <td>Pack Roam completo: diagnóstico + formación + contenido + soluciones</td>
-              <td>11.000 €</td>
-            </tr>
-          </tbody>
-        </table></div>
-      </div>
-    </div>
-
-    <div class="ruta-footer reveal">
-      <div class="ruta-footer-left">
-        <div class="ruta-footer-icon">🛏️</div>
-        <div>
-          <h4>¿Tu hotel está en nuestra ruta?</h4>
-          <p>Posibilidad de colaboración mediante noches de alojamiento, sin coste monetario.</p>
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-num">04</div>
+        <div class="step-title">Te Lo Damos Todo</div>
+        <div class="step-text">
+          Te entregamos todas las fotos y vídeos listos para que los pongas en tu web, WhatsApp o Instagram.
         </div>
       </div>
-      <a href="https://wa.me/34601108311" class="btn-dark" target="_blank">Consultar disponibilidad</a>
     </div>
   </div>
 </section>
 
-<!-- YOUTUBE -->
-<section style="background:var(--bg2);padding:5rem 2rem;text-align:center">
+<!-- 5. PAQUETES DE NOCHES -->
+<section class="packages-section" id="paquetes">
   <div class="container">
-    <div class="section-label reveal">Aprende más</div>
-    <h2 class="section-title reveal reveal-delay-1">¿Quieres aprender más?</h2>
-    <p class="section-sub reveal reveal-delay-2" style="margin:0 auto 2.5rem">Nuestro fundador Pau Martí comparte contenido sobre inteligencia artificial, viajes y emprendimiento para que puedas aplicarlo desde ya.</p>
-    <a href="https://www.youtube.com/@paumartifelip/videos" target="_blank" class="reveal reveal-delay-3" style="display:inline-flex;align-items:center;gap:0.85rem;background:#ff0000;color:#fff;padding:1rem 2.2rem;border-radius:var(--r);font-size:1rem;font-weight:700;text-decoration:none;transition:transform 0.25s var(--ease),box-shadow 0.25s var(--ease)" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 32px rgba(255,0,0,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-      Ver el canal de Pau Martí
+    <div class="text-center">
+      <span class="hero-tag" style="justify-content:center">● Elige Cuántos Días</span>
+      <h2 class="nike-h2 reveal">DUERME AQUÍ. <span class="terracota">CREAMOS AQUÍ.</span></h2>
+      <p class="nike-sub reveal reveal-delay-1">No cobramos dinero. Nuestra moneda son noches en tu hotel.</p>
+    </div>
+
+    <div class="packages-grid">
+      
+      <!-- 03 NOCHES -->
+      <div class="pack-card reveal reveal-delay-1">
+        <div class="pack-img-wrap">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Habitaciones de hotel" />
+          <span class="pack-badge">3 Noches</span>
+        </div>
+        <div class="pack-body">
+          <div class="pack-nights-title">ROAM MINI</div>
+          <div class="pack-sub-name">Habitación para 2 personas · 3 Noches</div>
+
+          <div class="pack-list-title">Tu Hotel Recibe:</div>
+          <ul class="pack-list">
+            <li><span class="dot">●</span> 2 vídeos cortos para Instagram o TikTok</li>
+            <li><span class="dot">●</span> 15 fotos bonitas y editadas</li>
+            <li><span class="dot">●</span> 1 vídeo mostrando la experiencia del hotel</li>
+            <li><span class="dot">●</span> Todo listo para publicar en internet</li>
+          </ul>
+
+          <a href="https://wa.me/34601108311?text=Hola%20Pau%20y%20Michelle,%20me%20interesa%20la%20colaboracion%20ROAM%20MINI%20(3%20noches)%20para%20mi%20hotel" class="btn-pill-outline" style="width:100%" target="_blank">
+            Quiero Esta Colaboración
+          </a>
+        </div>
+      </div>
+
+      <!-- 07 NOCHES (POPULAR) -->
+      <div class="pack-card featured reveal reveal-delay-2">
+        <div class="pack-img-wrap">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80" alt="Piscina y hotel" />
+          <span class="pack-badge" style="background:#111">★ MÁS ELEGIDO</span>
+        </div>
+        <div class="pack-body">
+          <div class="pack-nights-title" style="color:var(--roam)">ROAM WEEK</div>
+          <div class="pack-sub-name">Habitación para 2 personas · 7 Noches</div>
+
+          <div class="pack-bonus-box">
+            ★ REGALO: Te enseñamos trucos fáciles con inteligencia artificial para ahorrar tiempo todos los días.
+          </div>
+
+          <div class="pack-list-title">Tu Hotel Recibe:</div>
+          <ul class="pack-list">
+            <li><span class="dot">●</span> 5 vídeos cortos para redes sociales</li>
+            <li><span class="dot">●</span> 30 fotos bonitas de habitaciones y espacios</li>
+            <li><span class="dot">●</span> 1 vídeo principal mostrando todo el hotel</li>
+            <li><span class="dot">●</span> Fotos del desayuno, piscina y zonas comunes</li>
+            <li><span class="dot">●</span> Vídeos de cómo se siente un huésped allí</li>
+            <li><span class="dot">●</span> Todo preparado para tu web e Instagram</li>
+          </ul>
+
+          <a href="https://wa.me/34601108311?text=Hola%20Pau%20y%20Michelle,%20me%20interesa%20la%20colaboracion%20ROAM%20WEEK%20(7%20noches)%20para%20mi%20hotel" class="btn-pill-roam" style="width:100%;justify-content:center;padding:0.9rem" target="_blank">
+            Quiero Esta Colaboración
+          </a>
+        </div>
+      </div>
+
+      <!-- 14 NOCHES -->
+      <div class="pack-card reveal reveal-delay-3">
+        <div class="pack-img-wrap">
+          <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80" alt="Recepción de hotel" />
+          <span class="pack-badge">14 Noches</span>
+        </div>
+        <div class="pack-body">
+          <div class="pack-nights-title">ROAM EXPERIENCE</div>
+          <div class="pack-sub-name">Habitación para 2 personas · 14 Noches</div>
+
+          <div class="pack-list-title">Tu Hotel Recibe:</div>
+          <ul class="pack-list">
+            <li><span class="dot">●</span> 8 vídeos para redes sociales y anuncios</li>
+            <li><span class="dot">●</span> 50 fotos profesionales de alta calidad</li>
+            <li><span class="dot">●</span> 2 vídeos grandes del hotel</li>
+            <li><span class="dot">●</span> Fotos de todos los servicios y rincones</li>
+            <li><span class="dot">●</span> Revisión de tu web para conseguir más reservas</li>
+            <li><span class="dot">●</span> Ayuda para salir el primero en ChatGPT y Google</li>
+            <li><span class="dot">●</span> Clase práctica para tu equipo de trabajo</li>
+            <li><span class="dot">●</span> Charla final con ideas para ganar más dinero</li>
+          </ul>
+
+          <a href="https://wa.me/34601108311?text=Hola%20Pau%20y%20Michelle,%20me%20interesa%20la%20colaboracion%20ROAM%20EXPERIENCE%20(14%20noches)%20para%20mi%20hotel" class="btn-pill-outline" style="width:100%" target="_blank">
+            Quiero Esta Colaboración
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 6. QUIÉNES SOMOS -->
+<section class="team-section" id="quienes-somos">
+  <div class="container">
+    <div class="text-center">
+      <span class="hero-tag" style="justify-content:center">● Dos Personas Reales</span>
+      <h2 class="nike-h2 reveal">PAU & <span class="terracota">MICHELLE</span></h2>
+      <p class="nike-sub reveal reveal-delay-1">Viajamos juntos para ayudar a que los hoteles se vean mejor y funcionen más fácil.</p>
+    </div>
+
+    <div class="team-grid">
+      <!-- Pau -->
+      <div class="team-card reveal reveal-delay-1">
+        <div class="team-img-wrap">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Pau Martí" />
+        </div>
+        <div class="team-info">
+          <div class="team-name">Pau Martí</div>
+          <div class="team-role">Tecnología Fácil & Estrategia</div>
+          <p class="team-desc">
+            Profesor de inteligencia artificial y tecnología. Te enseña trucos sencillos para responder más rápido a los clientes por WhatsApp, no perder reservas y ahorrar horas de trabajo.
+          </p>
+        </div>
+      </div>
+
+      <!-- Michelle -->
+      <div class="team-card reveal reveal-delay-2">
+        <div class="team-img-wrap">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Michelle" />
+        </div>
+        <div class="team-info">
+          <div class="team-name">Michelle</div>
+          <div class="team-role">Fotos & Vídeos Bonitos</div>
+          <p class="team-desc">
+            Fotógrafa y creadora de vídeos. Hace que las habitaciones, la comida, los espacios y la experiencia de dormir en tu hotel se vean irresistibles para los viajeros.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. DESPUÉS DEL VIAJE -->
+<section class="grow-section" id="roam-grow">
+  <div class="container">
+    <div class="grow-box reveal">
+      <span class="hero-tag">● Si Quieres Más Adelante</span>
+      <h2 class="nike-h2" style="font-size:3.5rem">¿Y DESPUÉS DE <span class="terracota">NUESTRA ESTANCIA?</span></h2>
+      <p class="nike-sub" style="max-width:720px">
+        Si después del viaje te gusta nuestro trabajo y quieres que te sigamos ayudando con tu web, más fotos o sistemas automáticos, podemos seguir trabajando juntos de forma profesional.
+      </p>
+
+      <div class="grow-grid">
+        <div class="grow-item">
+          <h4>🤖 Respuestas Automáticas</h4>
+          <p>Para que tu hotel responda dudas por WhatsApp incluso cuando estás durmiendo.</p>
+        </div>
+        <div class="grow-item">
+          <h4>🔍 Salir en ChatGPT y Google</h4>
+          <p>Para que cuando alguien pregunte dónde dormir en tu ciudad, le recomienden tu hotel.</p>
+        </div>
+        <div class="grow-item">
+          <h4>📸 Más Fotos y Vídeos</h4>
+          <p>Nuevas fotos y vídeos cuando llegue temporada alta o hagas reformas.</p>
+        </div>
+        <div class="grow-item">
+          <h4>📈 Reservas Directas</h4>
+          <p>Para que la gente te reserve a ti directamente sin pagar comisiones altas a intermediarios.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. PREGUNTAS FRECUENTES -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="text-center">
+      <span class="hero-tag" style="justify-content:center">● Todo Claro</span>
+      <h2 class="nike-h2 reveal">PREGUNTAS <span class="terracota">FRECUENTES</span></h2>
+      <p class="nike-sub reveal reveal-delay-1">Respuestas sencillas a las preguntas más normales.</p>
+    </div>
+
+    <div class="faq-list reveal">
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Tenemos que pagar dinero por el trabajo?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          No. En las colaboraciones de Roam Stay cambiamos nuestro trabajo (las fotos, los vídeos y la ayuda) solo por poder dormir en tu hotel. No hay costes escondidos.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Cuántas personas venís al hotel?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Somos dos personas: Pau y Michelle. Con una sola habitación doble para los dos es suficiente.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>¿El hotel tiene que pagarnos los vuelos o billetes?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          No. Nosotros nos pagamos nuestros propios viajes y vuelos para llegar a tu ciudad.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Podemos usar las fotos y vídeos para siempre?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Sí. Te pasamos todas las fotos y vídeos en máxima calidad y son tuyos para siempre. Los puedes poner en tu web, redes sociales, folletos o donde tú quieras.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Trabajáis con cualquier tipo de hotel?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          Elegimos hoteles, hostales con encanto o alojamientos boutique según las fechas en las que viajamos a cada ciudad y si encajamos bien.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Qué pasa si ya tenemos fotógrafo o muchas fotos?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          En ese caso puedes ver nuestra sección <a href="roam-ai.html" style="color:var(--roam);font-weight:800">Roam AI</a>, donde te ayudamos solo con la parte de internet, tecnología y conseguir clientes.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 9. LLAMADA FINAL -->
+<section class="cta-section">
+  <div class="container">
+    <span class="cta-tag">Hablemos Hoy</span>
+    <h2 class="cta-h2 reveal">
+      ¿TIENES HABITACIONES LIBRES?<br />
+      <span style="color:var(--roam)">HABLEMOS POR WHATSAPP</span>
+    </h2>
+    <p class="cta-lead reveal reveal-delay-1">
+      Escríbenos un mensaje diciéndonos qué hotel tienes, en qué ciudad estás y cuántos días te gustaría intercambiar. Te contestamos enseguida.
+    </p>
+    <a href="https://wa.me/34601108311?text=Hola%20Pau%20y%20Michelle,%20quiero%20proponer%20una%20colaboracion%20Roam%20Stay%20para%20mi%20hotel" class="btn-pill-roam" target="_blank" style="padding:1.1rem 2.8rem;font-size:1.05rem">
+      Escribir por WhatsApp
     </a>
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section class="cta-section">
-  <div class="container">
-    <div class="section-label reveal" style="margin-bottom:1.5rem">¿Tienes un hotel u hostal?</div>
-    <h2 class="reveal reveal-delay-1">Convierte noches disponibles<br/>en formación, contenido<br/>e inteligencia artificial</h2>
-    <p class="reveal reveal-delay-2">Escríbenos y vemos cómo Roam puede ayudarte. Sin compromiso, sin letra pequeña.</p>
-    <div class="cta-btns reveal reveal-delay-3">
-      <a href="https://wa.me/34601108311" class="btn-wa" target="_blank">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Escríbenos por WhatsApp
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
+<!-- PIE DE PÁGINA -->
 <footer>
-  <div class="footer-logo">Roam</div>
-  <p class="footer-desc">Innovación para hoteles y hostales mediante inteligencia artificial, contenido y formación. A cambio de alojamiento.</p>
-  <div class="footer-links">
-    <a href="#que-conseguir">Qué ofrecemos</a>
-    <a href="#metodo">Método ROAM</a>
-    <a href="#como-funciona">Cómo funciona</a>
-    <a href="#colaboracion">Colaboración</a>
-    <a href="https://wa.me/34601108311" target="_blank">Contacto</a>
+  <div class="footer-inner">
+    <div class="footer-logo">ROAM<span>.</span></div>
+    <div class="footer-links">
+      <a href="#como-funciona">Cómo Funciona</a>
+      <a href="#paquetes">Noches</a>
+      <a href="roam-ai.html">Roam AI</a>
+      <a href="#quienes-somos">Quiénes Somos</a>
+      <a href="#faq">Preguntas</a>
+      <a href="https://wa.me/34601108311" target="_blank">WhatsApp</a>
+    </div>
+    <p>© 2026 Roam Hoteles · Pau Martí & Michelle</p>
   </div>
-  <p class="footer-copy">© 2026 Roam · +34 601 108 311</p>
 </footer>
 
 <script>
-  // Hamburger menu
   const ham = document.getElementById('hamburger');
   const mob = document.getElementById('mobileMenu');
   ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); });
   function closeMob() { ham.classList.remove('open'); mob.classList.remove('open'); }
   document.addEventListener('click', e => { if (!ham.contains(e.target) && !mob.contains(e.target)) closeMob(); });
 
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.12 });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Animated counters
-  function animateCount(el) {
-    const target = parseInt(el.dataset.count);
-    const suffix = target >= 100 ? '+' : target === 7 ? '+' : '+';
-    const duration = 1800;
-    const start = performance.now();
-    function step(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(eased * target) + (progress === 1 ? suffix : '');
-      if (progress < 1) requestAnimationFrame(step);
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+    if (!isOpen) {
+      item.classList.add('open');
     }
-    requestAnimationFrame(step);
   }
-  const counterObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); counterObs.unobserve(e.target); } });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
 </script>
+
 </body>
 </html>
