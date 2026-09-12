@@ -678,6 +678,29 @@ body {
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
 }
 
+.author-avatar-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.6rem;
+}
+
+.author-avatar-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
+  border: 4px solid #ffffff;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.14);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.author-clean-card:hover .author-avatar-img {
+  transform: scale(1.06);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
+}
+
 .author-tag-pill {
   display: inline-block;
   font-size: 0.8rem;
