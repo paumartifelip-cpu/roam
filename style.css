@@ -245,8 +245,6 @@ section { padding: 5.5rem 0; }
 .option-exclusive { align-self: flex-start; margin: -0.4rem 0 1rem; font-size: 0.78rem; font-weight: 600; color: #5b4fb0; padding: 0.3rem 0.8rem; border-radius: 999px; background: rgba(196, 181, 240, 0.35); border: 1px solid rgba(126, 143, 224, 0.4); }
 .option-notice { font-size: 0.9rem; color: var(--ink); background: rgba(255, 255, 255, 0.7); border: 1px dashed rgba(126, 143, 224, 0.6); border-radius: 14px; padding: 0.9rem 1.1rem; margin-bottom: 1.6rem; }
 .option-notice strong { display: block; margin-bottom: 0.2rem; }
-.modal-notice { font-size: 0.88rem; background: rgba(196, 181, 240, 0.25); border: 1px solid rgba(126, 143, 224, 0.4); border-radius: 12px; padding: 0.8rem 1rem; margin-bottom: 1.2rem; color: var(--ink); }
-.modal-notice[hidden] { display: none; }
 .option-desc { font-size: 0.98rem; color: var(--ink-soft); margin-bottom: 1.8rem; flex-grow: 1; }
 .option-desc strong { color: var(--ink); }
 .option .btn { align-self: flex-start; }
@@ -323,28 +321,6 @@ footer { padding: 2.5rem 0 3rem; font-size: 0.86rem; color: var(--ink-soft); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 1.6rem; }
 .footer-links a:hover { color: var(--ink); }
 
-/* ── MODAL ── */
-.modal-backdrop {
-  position: fixed; inset: 0; z-index: 1000;
-  background: rgba(30, 34, 60, 0.35);
-  backdrop-filter: blur(10px);
-  display: none; align-items: center; justify-content: center;
-  padding: 1.2rem;
-}
-.modal-backdrop.open { display: flex; }
-.modal { width: 100%; max-width: 520px; padding: 2.2rem; position: relative; background: rgba(255, 255, 255, 0.9); max-height: 92vh; overflow-y: auto; }
-.modal-close { position: absolute; top: 1rem; right: 1.2rem; background: none; font-size: 1.6rem; color: var(--ink-faint); line-height: 1; }
-.modal h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.4rem; }
-.modal > p { font-size: 0.92rem; color: var(--ink-soft); margin-bottom: 1.4rem; }
-.field { margin-bottom: 1rem; }
-.field label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--ink-soft); margin-bottom: 0.35rem; }
-.field input, .field textarea, .field select {
-  width: 100%; padding: 0.8rem 1rem; font-family: inherit; font-size: 0.95rem;
-  background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(16, 18, 24, 0.12); border-radius: 12px; color: var(--ink);
-}
-.field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: #7e8fe0; box-shadow: 0 0 0 3px rgba(126, 143, 224, 0.2); }
-.modal .btn { width: 100%; margin-top: 0.4rem; }
-
 /* ── RESPONSIVE ── */
 @media (max-width: 1000px) {
   .class-card { grid-template-columns: 1fr; gap: 1.4rem; }
@@ -391,5 +367,4 @@ footer { padding: 2.5rem 0 3rem; font-size: 0.86rem; color: var(--ink-soft); }
   .trainer-text h2 { font-size: 1.8rem; }
   .trainer img { aspect-ratio: 1 / 1; }
   .footer-inner { flex-direction: column; text-align: center; }
-  .modal { padding: 1.8rem 1.3rem; }
 }
