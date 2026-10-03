@@ -241,10 +241,15 @@
 
           <article class="glass option option-featured">
             <span class="option-num">Opción 2 · Canje</span>
+            <span class="option-exclusive">Solo hoteles seleccionados</span>
             <h3>Formación a cambio de estancia</h3>
             <div class="amount">290 $ USD</div>
             <p class="option-desc">Solo 290 $ USD para cubrir gastos, más <strong>4 semanas (28 días) de alojamiento en el hotel</strong> para nuestro equipo formativo.</p>
-            <button class="btn btn-dark" onclick="openModal('2')">Elegir opción 2</button>
+            <div class="option-notice">
+              <strong>Antes de reservar, consúltanos.</strong>
+              Este canje no es para todos los hoteles. Primero revisamos si tu hotel tiene las características para poder aplicar.
+            </div>
+            <button class="btn btn-dark" onclick="openModal('2')">Consultar si mi hotel puede aplicar</button>
           </article>
         </div>
 
@@ -403,14 +408,17 @@
   <div class="modal-backdrop" id="modal" onclick="if (event.target === this) closeModal()">
     <div class="glass modal">
       <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
-      <h3>Reserva tu plaza</h3>
-      <p>Completa los datos de tu hotel y te responderemos en menos de 2 horas.</p>
+      <h3 id="modalTitle">Reserva tu plaza</h3>
+      <p id="modalIntro">Completa los datos de tu hotel y te responderemos en menos de 2 horas.</p>
+      <div class="modal-notice" id="modalNotice" hidden>
+        <strong>El canje no es para todos los hoteles.</strong> Esto es una consulta, no una reserva: revisaremos si tu hotel puede aplicar y te confirmaremos antes de nada.
+      </div>
       <form onsubmit="submitForm(event)">
         <div class="field">
           <label for="userOption">Opción</label>
-          <select id="userOption">
+          <select id="userOption" onchange="updateModal()">
             <option value="1">Opción 1 · Pago directo (1.990 $ USD)</option>
-            <option value="2">Opción 2 · Canje (290 $ USD + 4 semanas / 28 días de estancia)</option>
+            <option value="2">Opción 2 · Canje (290 $ USD + 4 semanas / 28 días) · Consultar si mi hotel puede aplicar</option>
             <option value="0">Aún no lo sé, quiero más información</option>
           </select>
         </div>
@@ -430,7 +438,7 @@
           <label for="userNotes">Comentarios (opcional)</label>
           <textarea id="userNotes" rows="2" placeholder="Número de empleados, fechas, dudas..."></textarea>
         </div>
-        <button type="submit" class="btn btn-dark">Enviar solicitud</button>
+        <button type="submit" class="btn btn-dark" id="modalSubmit">Enviar solicitud</button>
       </form>
     </div>
   </div>
@@ -441,8 +449,19 @@
 
     function openModal(option) {
       if (option) document.getElementById('userOption').value = option;
+      updateModal();
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
+    }
+
+    function updateModal() {
+      const isSwap = document.getElementById('userOption').value === '2';
+      document.getElementById('modalNotice').hidden = !isSwap;
+      document.getElementById('modalTitle').textContent = isSwap ? 'Consulta si tu hotel puede aplicar' : 'Reserva tu plaza';
+      document.getElementById('modalIntro').textContent = isSwap
+        ? 'Cuéntanos cómo es tu hotel y te diremos si encaja en el canje.'
+        : 'Completa los datos de tu hotel y te responderemos en menos de 2 horas.';
+      document.getElementById('modalSubmit').textContent = isSwap ? 'Enviar consulta' : 'Enviar solicitud';
     }
 
     function closeModal() {
@@ -468,7 +487,10 @@
         '0': 'la formación (me gustaría más información sobre las opciones)'
       }[document.getElementById('userOption').value];
 
-      const message = `Hola ROAM, me interesa ${optionText} de la *Formación de IA para Hoteles (1 mes)* para el *${hotel}*. Mi nombre es ${name}, mi teléfono es ${phone}.${notes ? ' Detalles: ' + notes : ''}`;
+      const isSwap = document.getElementById('userOption').value === '2';
+      const message = isSwap
+        ? `Hola ROAM, quería consultar si mi hotel *${hotel}* puede aplicar a la Opción 2 (canje: 290 $ USD + 4 semanas / 28 días de estancia) de la *Formación de IA para Hoteles*. Mi nombre es ${name}, mi teléfono es ${phone}.${notes ? ' Detalles: ' + notes : ''}`
+        : `Hola ROAM, me interesa ${optionText} de la *Formación de IA para Hoteles (1 mes)* para el *${hotel}*. Mi nombre es ${name}, mi teléfono es ${phone}.${notes ? ' Detalles: ' + notes : ''}`;
       window.open(`https://wa.me/34601108311?text=${encodeURIComponent(message)}`, '_blank');
       closeModal();
     }

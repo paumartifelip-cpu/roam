@@ -242,6 +242,11 @@ section { padding: 5.5rem 0; }
 .option-num { align-self: flex-start; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 999px; background: var(--ink); color: #fff; margin-bottom: 1.2rem; }
 .option h3 { font-size: 1.2rem; font-weight: 600; }
 .option .amount { font-size: 3.6rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1.1; margin: 0.6rem 0 0.8rem; }
+.option-exclusive { align-self: flex-start; margin: -0.4rem 0 1rem; font-size: 0.78rem; font-weight: 600; color: #5b4fb0; padding: 0.3rem 0.8rem; border-radius: 999px; background: rgba(196, 181, 240, 0.35); border: 1px solid rgba(126, 143, 224, 0.4); }
+.option-notice { font-size: 0.9rem; color: var(--ink); background: rgba(255, 255, 255, 0.7); border: 1px dashed rgba(126, 143, 224, 0.6); border-radius: 14px; padding: 0.9rem 1.1rem; margin-bottom: 1.6rem; }
+.option-notice strong { display: block; margin-bottom: 0.2rem; }
+.modal-notice { font-size: 0.88rem; background: rgba(196, 181, 240, 0.25); border: 1px solid rgba(126, 143, 224, 0.4); border-radius: 12px; padding: 0.8rem 1rem; margin-bottom: 1.2rem; color: var(--ink); }
+.modal-notice[hidden] { display: none; }
 .option-desc { font-size: 0.98rem; color: var(--ink-soft); margin-bottom: 1.8rem; flex-grow: 1; }
 .option-desc strong { color: var(--ink); }
 .option .btn { align-self: flex-start; }
