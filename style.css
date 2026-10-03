@@ -28,13 +28,22 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
   background:
     radial-gradient(60% 50% at 8% 0%, rgba(157, 184, 242, 0.45) 0%, transparent 70%),
     radial-gradient(50% 45% at 100% 20%, rgba(242, 184, 207, 0.4) 0%, transparent 70%),
     radial-gradient(55% 45% at 0% 70%, rgba(196, 181, 240, 0.35) 0%, transparent 70%),
-    radial-gradient(50% 40% at 100% 95%, rgba(157, 184, 242, 0.4) 0%, transparent 70%),
-    var(--bg);
-  background-attachment: fixed;
+    radial-gradient(50% 40% at 100% 95%, rgba(157, 184, 242, 0.4) 0%, transparent 70%);
 }
 
 body {
@@ -46,7 +55,7 @@ body {
 
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
-button { font-family: inherit; cursor: pointer; border: none; outline: none; }
+button { font-family: inherit; -webkit-tap-highlight-color: transparent; cursor: pointer; border: none; outline: none; }
 ul { list-style: none; }
 
 .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; }
@@ -331,6 +340,15 @@ footer { padding: 2.5rem 0 3rem; font-size: 0.86rem; color: var(--ink-soft); }
 }
 
 @media (max-width: 720px) {
+  .btn { min-height: 48px; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; }
+  .menu-btn { width: 44px; height: 44px; }
+  .nav-links a { padding: 0.4rem 0; font-size: 1rem; }
+  .press-btn { padding: 0.6rem 0.95rem; font-size: 0.86rem; }
+  .press-btn small { display: none; }
+  .option .btn, .cta-box .btn, .more-reviews .btn { width: 100%; }
+  .footer-links { justify-content: center; }
   .testimonials { grid-template-columns: 1fr; }
   .quote-wide { grid-column: auto; }
   .marquee-track { animation-duration: 35s; }
@@ -367,4 +385,14 @@ footer { padding: 2.5rem 0 3rem; font-size: 0.86rem; color: var(--ink-soft); }
   .trainer-text h2 { font-size: 1.8rem; }
   .trainer img { aspect-ratio: 1 / 1; }
   .footer-inner { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 380px) {
+  .container { padding: 0 0.9rem; }
+  .nav { width: calc(100% - 1.4rem); }
+  .hero-frame { padding: 2rem 1.1rem; }
+  .hero h1 { font-size: 2rem; }
+  .eyebrow { font-size: 0.72rem; }
+  .logo-sub { display: none; }
+  .class-card, .quote { padding: 1.3rem; }
 }
