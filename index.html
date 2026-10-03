@@ -3,607 +3,468 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ROAM Hoteles · Fotos, SEO e Inteligencia Artificial</title>
-  <meta name="description" content="Propuesta de colaboración de alto impacto para hoteles: 0€ en dinero a cambio de estancia. Renovación fotográfica profesional, salir el primero en Google y ChatGPT, y formación práctica en IA para tu equipo." />
-  
-  <!-- Open Graph / WhatsApp / Facebook / iMessage -->
+  <title>ROAM · Escuela Superior de Formación en Hostelería con Inteligencia Artificial</title>
+  <meta name="description" content="Formación intensiva de 1 mes en Inteligencia Artificial para equipos de hotel: ahorra horas de trabajo, responde mejor a tus huéspedes y depende menos de las OTAs." />
+
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="ROAM Hoteles" />
-  <meta property="og:title" content="ROAM Hoteles · Fotografía, SEO e Inteligencia Artificial" />
-  <meta property="og:description" content="Propuesta de colaboración de alto impacto para hoteles: 0€ en dinero a cambio de estancia. Renovación fotográfica, SEO directo y formación en IA." />
-  <meta property="og:image" content="https://raw.githubusercontent.com/paumartifelip-cpu/roam/main/assets/og-image.jpg" />
-  <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/paumartifelip-cpu/roam/main/assets/og-image.jpg" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1024" />
-  <meta property="og:image:height" content="1024" />
-  <meta property="og:image:alt" content="ROAM Hoteles - Pau Martí & Michelle Cano" />
+  <meta property="og:site_name" content="ROAM Escuela Superior de Formación en Hostelería con IA" />
+  <meta property="og:title" content="ROAM · Escuela Superior de Formación en Hostelería con Inteligencia Artificial" />
+  <meta property="og:description" content="4 semanas para que tu equipo de hotel trabaje con IA: reseñas, reservas, peticiones y automatización." />
+  <meta property="og:image" content="assets/og-image.jpg" />
 
-  <!-- Twitter / X Card (Vista previa grande) -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ROAM Hoteles · Fotografía, SEO e Inteligencia Artificial" />
-  <meta name="twitter:description" content="Propuesta de colaboración para hoteles: 0€ en dinero a cambio de estancia. Fotos profesionales, SEO directo y formación en IA." />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/paumartifelip-cpu/roam/main/assets/og-image.jpg" />
-  <meta name="twitter:image:alt" content="ROAM Hoteles" />
-
-  <!-- Favicon e icono móvil -->
-  <link rel="icon" type="image/jpeg" href="assets/seo-chico.jpg" />
-  <link rel="apple-touch-icon" href="assets/seo-chico.jpg" />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/jpeg" href="assets/hero-luxury.jpg" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ── 1. MENÚ SUPERIOR CON LOS 3 APARTADOS GRANDES Y VISIBLES ── -->
-  <div class="nav-outer-wrap">
-    <nav class="nav-bar-container">
-      <a href="index.html" class="nav-brand-text">
-        ROAM<span>.</span>
-      </a>
-
-      <!-- Los 3 apartados accesibles desde el inicio -->
-      <div class="nav-tabs-group">
-        <button class="nav-big-tab active" id="btnTabFotos" onclick="switchSection('fotos')">
-          <span class="nav-tab-dot fotos"></span>
-          <span class="nav-tab-label"><span class="label-full">Fotos y contenido</span><span class="label-short">Fotos</span></span>
-        </button>
-        <button class="nav-big-tab" id="btnTabSeo" onclick="switchSection('seo')">
-          <span class="nav-tab-dot seo"></span>
-          <span class="nav-tab-label"><span class="label-full">SEO</span><span class="label-short">SEO</span></span>
-        </button>
-        <button class="nav-big-tab" id="btnTabIa" onclick="switchSection('ia')">
-          <span class="nav-tab-dot ia"></span>
-          <span class="nav-tab-label"><span class="label-full">Inteligencia artificial</span><span class="label-short">IA</span></span>
-        </button>
-      </div>
-
-      <a href="https://wa.me/34601108311" class="nav-cta-btn" id="navCta" target="_blank">
-        <span>💬 Hablar por WhatsApp</span>
-      </a>
+  <!-- NAV -->
+  <header class="nav">
+    <a href="index.html" class="logo-wrap"><span class="logo">ROAM<span>.</span></span><span class="logo-sub">Escuela Superior de Formación en Hostelería con IA</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#problemas" onclick="closeNav()">Problemas</a>
+      <a href="#programa" onclick="closeNav()">Programa</a>
+      <a href="#precio" onclick="closeNav()">Precio</a>
+      <a href="#testimonios" onclick="closeNav()">Testimonios</a>
     </nav>
-  </div>
+    <div class="nav-right">
+      <button class="btn btn-dark" onclick="openModal()">Reservar plaza</button>
+      <button class="menu-btn" onclick="toggleNav()" aria-label="Menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
 
-  <!-- ── 2. PORTADA: TÍTULO GIGANTE DE TRANSFORMACIÓN (IZQ) Y PERSONAJE MUY GRANDE (DER) ── -->
-  <main class="hero-stage">
-    <div class="hero-grid-2col">
-      
-      <!-- COLUMNA IZQUIERDA: QUÉ ES LO QUE VA A CONSEGUIR EL HOTEL -->
-      <div class="hero-left-info">
-        
-        <div class="hero-tag-badge">
-          <span id="heroPreTag">BLOQUE 01 · FOTOGRAFÍA & VÍDEO</span>
-        </div>
-
-        <!-- TÍTULO EN GRANDE DE LA TRANSFORMACIÓN (DE DÓNDE ESTÁS -> A DÓNDE VAS) -->
-        <h1 class="hero-transformation-h1" id="heroH1">
-          <span class="h1-from" id="heroH1From">De fotos viejas que nadie mira,</span>
-          <span class="h1-to" id="heroH1To">a un hotel irresistible que se llena porque enamora a primera vista.</span>
-        </h1>
-
-        <!-- CAJA DE TRANSFORMACIÓN CLARA -->
-        <div class="transformation-card-box">
-          <div class="transformation-before-after">
-            <div class="trans-row">
-              <span class="trans-icon-badge">❌</span>
-              <div>
-                <strong>Antes en tu hotel:</strong> <span id="transBefore">Fotos oscuras en el móvil, habitaciones que parecen normales y viajeros que se van a la competencia.</span>
-              </div>
-            </div>
-            <div class="trans-row">
-              <span class="trans-icon-badge">✨</span>
-              <div>
-                <strong>Lo que consigues con ROAM:</strong> <span id="transAfter">Fotos profesionales luminosas y vídeos atractivos que hacen que los viajeros quieran reservar de inmediato.</span>
-              </div>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="formacion">
+      <div class="container">
+        <div class="hero-frame glass">
+          <div class="orb"></div>
+          <div class="orb-dot"></div>
+          <div class="hero-copy">
+            <span class="eyebrow">ROAM · Escuela Superior de Formación en Hostelería con Inteligencia Artificial</span>
+            <h1>Aprende y descubre el poder de la <b>inteligencia artificial</b> para los empleados de tu hotel</h1>
+            <p class="lead">Un mes de formación práctica para que tu equipo ahorre horas cada semana, conteste mejor a los huéspedes y deje de depender de las OTAs.</p>
+            <div class="hero-actions">
+              <button class="btn btn-dark" onclick="openModal()">Reservar plaza</button>
+              <a href="#programa" class="btn btn-light">Ver el programa</a>
             </div>
           </div>
         </div>
 
-        <!-- PÍLDORA DE LA PROPUESTA -->
-        <div class="hero-deal-pill">
-          <span id="dealIcon">🤝</span>
-          <span id="heroDealText">El trato: 0€ en dinero a cambio de estancia (7 noches o 3 semanas / 21 noches).</span>
-        </div>
-
-        <!-- ACCIÓN PRINCIPAL -->
-        <div class="hero-actions-row">
-          <a href="https://wa.me/34601108311?text=Hola%20Michelle%20y%20Pau,%20quiero%20renovar%20las%20fotos%20de%20mi%20hotel%20a%20cambio%20de%20estancia" class="hero-main-btn" id="heroMainBtn" target="_blank">
-            <span id="heroBtnText">Quiero estas Fotos para mi Hotel</span>
-            <span>→</span>
-          </a>
-          <a href="#paso-a-paso" class="hero-secondary-link">
-            Ver cómo funciona paso a paso ↓
-          </a>
-        </div>
-
-      </div>
-
-      <!-- COLUMNA DERECHA: PERSONAJE MUY GRANDE -->
-      <div class="hero-right-character">
-        <div class="character-visual-wrap">
-          <img src="assets/personaje-amarillo.jpg" alt="ROAM" class="character-img-big" id="characterImg" />
+        <div class="hero-stats">
+          <div class="glass stat"><strong>+10.000</strong><span>personas formadas</span></div>
+          <div class="glass stat"><strong>+30 hoteles</strong><span>que ya saben dominar la inteligencia artificial</span></div>
         </div>
       </div>
+    </section>
 
-    </div>
+    <!-- GALERÍA -->
+    <section class="gallery-section">
+      <div class="container">
+        <div class="gallery">
+          <figure class="glass shot shot-lg"><img src="assets/galeria-lobby.jpg" alt="Lobby de un hotel de lujo con luz natural" loading="lazy" /></figure>
+          <figure class="glass shot"><img src="assets/galeria-habitacion.jpg" alt="Habitación de hotel con vistas al mar" loading="lazy" /></figure>
+          <figure class="glass shot"><img src="assets/galeria-piscina.jpg" alt="Zona de piscina y spa de un hotel" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEMAS -->
+    <section id="problemas">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Lo que vemos en los hoteles</span>
+          <h2>Los 10 problemas que te <b>cuestan dinero</b> cada día</h2>
+          <p>No son problemas de ganas. Son problemas de tiempo, de herramientas y de dependencia.</p>
+        </div>
+
+        <div class="problem-group">
+          <h3 class="group-title">Ventas e ingresos</h3>
+          <div class="problems">
+            <article class="glass problem">
+              <span class="p-num">01</span>
+              <h4>Dependencia de las OTAs</h4>
+              <p>Booking y Expedia llenan el hotel, pero sus comisiones (~15-20 %) recortan tu margen en cada reserva.</p>
+            </article>
+            <article class="glass problem">
+              <span class="p-num">02</span>
+              <h4>Pocas reservas directas</h4>
+              <p>La web propia del hotel convierte poco: entra gente, pero reserva en otro sitio.</p>
+            </article>
+            <article class="glass problem">
+              <span class="p-num">03</span>
+              <h4>Poca visibilidad</h4>
+              <p>El hotel no aparece bien en Google ni en las recomendaciones de IA como ChatGPT.</p>
+            </article>
+            <article class="glass problem">
+              <span class="p-num">04</span>
+              <h4>Estacionalidad y ocupación</h4>
+              <p>Cuesta llenar la temporada baja y ajustar los precios para optimizar la ocupación.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="problem-group">
+          <h3 class="group-title">Huéspedes y reputación</h3>
+          <div class="problems">
+            <article class="glass problem">
+              <span class="p-num">05</span>
+              <h4>Respuestas lentas a los huéspedes</h4>
+              <p>Por WhatsApp o email, tardar en contestar significa perder reservas.</p>
+            </article>
+            <article class="glass problem">
+              <span class="p-num">06</span>
+              <h4>Reseñas sin aprovechar</h4>
+              <p>Gestionar y sacar partido a las reseñas de Google y TripAdvisor lleva tiempo que no hay.</p>
+            </article>
+            <article class="glass problem">
+              <span class="p-num">07</span>
+              <h4>Contenido caro y lento</h4>
+              <p>Las fotos y los vídeos de calidad para marketing cuestan dinero y tardan en producirse.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="problem-group">
+          <h3 class="group-title">Equipo y operación</h3>
+          <div class="problems">
+            <article class="glass problem">
+              <span class="p-num">08</span>
+              <h4>Equipo sin tiempo</h4>
+              <p>Tareas repetitivas, formación del personal nuevo y falta de tiempo en el día a día.</p>
+            </article>
+            <article class="glass problem">
+              <span class="p-num">09</span>
+              <h4>Costes y rentabilidad</h4>
+              <p>Los costes operativos aprietan y cuesta mantener la rentabilidad general del hotel.</p>
+            </article>
+            <article class="glass problem">
+              <span class="p-num">10</span>
+              <h4>No saber por dónde empezar</h4>
+              <p>Hay tanta tecnología e IA que muchos hoteles se sienten abrumados y no dan el primer paso.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMA -->
+    <section id="programa">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">El programa</span>
+          <h2>Cada clase <b>resuelve problemas concretos</b></h2>
+          <p>4 clases en directo de 1h 30m, una por semana, con casos reales de tu hotel. Cada una ataca los problemas que acabas de ver, y entre las cuatro cubrimos los 10.</p>
+        </div>
+
+        <div class="classes">
+          <article class="glass class-card">
+            <div class="class-head">
+              <span class="class-num">Clase 1</span>
+              <h3>Empezar con IA y ganar tiempo</h3>
+              <p>Quitamos el miedo a la tecnología y ponemos a trabajar a la IA en las tareas del día a día.</p>
+            </div>
+            <div class="class-body">
+              <div class="class-label">Problemas que resuelve</div>
+              <div class="chips"><a href="#problemas" class="chip"><span class="p-num">10</span>No saber por dónde empezar</a><a href="#problemas" class="chip"><span class="p-num">08</span>Equipo sin tiempo</a></div>
+              <div class="class-label">Qué haremos</div>
+              <ul class="class-list"><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Qué es la IA y qué herramientas usar en un hotel, sin tecnicismos.</span></li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Cómo escribir buenos prompts para obtener buenas respuestas.</span></li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Automatizar tareas repetitivas y formar al personal nuevo más rápido.</span></li></ul>
+            </div>
+          </article>
+          <article class="glass class-card">
+            <div class="class-head">
+              <span class="class-num">Clase 2</span>
+              <h3>Atender a los huéspedes y cuidar la reputación</h3>
+              <p>Respondemos rápido y bien, y convertimos las reseñas en una ventaja.</p>
+            </div>
+            <div class="class-body">
+              <div class="class-label">Problemas que resuelve</div>
+              <div class="chips"><a href="#problemas" class="chip"><span class="p-num">05</span>Respuestas lentas a los huéspedes</a><a href="#problemas" class="chip"><span class="p-num">06</span>Reseñas sin aprovechar</a></div>
+              <div class="class-label">Qué haremos</div>
+              <ul class="class-list"><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Contestar WhatsApp y email en segundos, también fuera de horario.</span></li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Responder reseñas de Google y TripAdvisor con buen tono.</span></li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Usar lo que dicen los huéspedes para mejorar y vender más.</span></li></ul>
+            </div>
+          </article>
+          <article class="glass class-card">
+            <div class="class-head">
+              <span class="class-num">Clase 3</span>
+              <h3>Más reservas directas y más visibilidad</h3>
+              <p>Llevamos a los huéspedes a tu web para depender menos de las OTAs.</p>
+            </div>
+            <div class="class-body">
+              <div class="class-label">Problemas que resuelve</div>
+              <div class="chips"><a href="#problemas" class="chip"><span class="p-num">01</span>Dependencia de las OTAs</a><a href="#problemas" class="chip"><span class="p-num">02</span>Pocas reservas directas</a><a href="#problemas" class="chip"><span class="p-num">03</span>Poca visibilidad</a></div>
+              <div class="class-label">Qué haremos</div>
+              <ul class="class-list"><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Mejorar la web del hotel para que más visitas acaben reservando.</span></li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Aparecer mejor en Google y en las recomendaciones de ChatGPT.</span></li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Atraer reserva directa y recortar comisiones.</span></li></ul>
+            </div>
+          </article>
+          <article class="glass class-card">
+            <div class="class-head">
+              <span class="class-num">Clase 4</span>
+              <h3>Contenido, ocupación y automatización</h3>
+              <p>Creamos marketing sin gastar de más y dejamos el hotel funcionando con IA.</p>
+            </div>
+            <div class="class-body">
+              <div class="class-label">Problemas que resuelve</div>
+              <div class="chips"><a href="#problemas" class="chip"><span class="p-num">07</span>Contenido caro y lento</a><a href="#problemas" class="chip"><span class="p-num">04</span>Estacionalidad y ocupación</a><a href="#problemas" class="chip"><span class="p-num">09</span>Costes y rentabilidad</a></div>
+              <div class="class-label">Qué haremos</div>
+              <ul class="class-list"><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Crear textos, fotos y vídeos para marketing con ayuda de IA.</span></li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Ajustar precios y llenar la temporada baja.</span></li><li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Automatizar procesos y medir cuánto tiempo y dinero ahorras.</span></li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRECIO -->
+    <section id="precio">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Inversión</span>
+          <h2>Una formación, <b>dos formas de acceder</b></h2>
+          <p>El programa es exactamente el mismo: 4 semanas de formación de IA para tu equipo. Tú eliges cómo lo cubres.</p>
+        </div>
+
+        <div class="options">
+          <article class="glass option">
+            <span class="option-num">Opción 1</span>
+            <h3>Pago directo</h3>
+            <div class="amount">1.990 $ USD</div>
+            <p class="option-desc">Pago único. Formación completa de 4 semanas, sin ninguna otra condición.</p>
+            <button class="btn btn-dark" onclick="openModal('1')">Elegir opción 1</button>
+          </article>
+
+          <article class="glass option option-featured">
+            <span class="option-num">Opción 2 · Canje</span>
+            <h3>Formación a cambio de estancia</h3>
+            <div class="amount">290 $ USD</div>
+            <p class="option-desc">Solo 290 $ USD para cubrir gastos, más <strong>4 semanas (28 días) de alojamiento en el hotel</strong> para nuestro equipo formativo.</p>
+            <button class="btn btn-dark" onclick="openModal('2')">Elegir opción 2</button>
+          </article>
+        </div>
+
+        <ul class="glass includes">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>4 sesiones en directo</strong> de 1h 30m, una por semana.</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Casos reales</strong> de tu hotel desde la primera sesión.</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Para todo el equipo</strong>: recepción, reservas y atención al cliente.</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Acompañamiento directo</strong> para resolver dudas tras el curso.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FORMADOR -->
+    <section id="formador" style="padding-top: 0;">
+      <div class="container">
+        <div class="glass trainer">
+          <img src="assets/pau-formador.jpg" alt="Pau Martí Felip, formador de inteligencia artificial" loading="lazy" />
+          <div class="trainer-text">
+            <span class="kicker">Formador</span>
+            <h2>Pau Martí Felip</h2>
+            <p>Pau Martí Felip es profesor y divulgador de Inteligencia Artificial que enseña a personas y empresas a utilizar la IA para ganar más y trabajar con mayor libertad.</p>
+            <p>Ha formado a miles de profesionales en Europa y Latinoamérica, mostrando paso a paso cómo aplicar herramientas de inteligencia artificial en el día a día para emprender, automatizar procesos y crear nuevas oportunidades de negocio.</p>
+            <p>En sus sesiones combina demostraciones en vivo, ejemplos reales y experimentos con herramientas de IA que permiten a los asistentes ver en minutos lo que antes parecía reservado a expertos.</p>
+            <p>Mientras comparte su conocimiento, viaja por el mundo haciendo formación en IA para hoteles, demostrando en primera persona cómo la tecnología puede abrir nuevas formas de vivir y trabajar.</p>
+            <p>Su trabajo ha sido destacado en la mayoría de medios de comunicación de España y Latinoamérica, donde explica cómo la inteligencia artificial está transformando la manera en que las personas crean, emprenden y generan ingresos.</p>
+
+            <div class="press">
+              <div class="press-label">Su canal</div>
+              <div class="press-buttons">
+                <a class="press-btn" href="https://www.youtube.com/@paumartifelip" target="_blank" rel="noopener"><span>Canal de YouTube</span><small>@paumartifelip</small><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+              </div>
+            </div>
+
+            <div class="press">
+              <div class="press-label">Su trabajo en los medios</div>
+              <div class="press-buttons">
+                <a class="press-btn" href="https://elpais.com/tecnologia/2023-03-14/el-boom-de-la-inteligencia-artificial-crea-un-nuevo-trabajo-experto-en-hablar-con-la-maquina.html" target="_blank" rel="noopener"><span>El País</span><small>España</small><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                <a class="press-btn" href="https://www.elespanol.com/reportajes/20230328/pau-aprendio-tiktok-ingeniero-ia-trabajo-eur/751675167_0.html" target="_blank" rel="noopener"><span>El Español</span><small>España</small><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                <a class="press-btn" href="https://www.lasexta.com/programas/sexta-noche/advertencia-ingeniero-hosteleros-inteligencia-artificial-vais-quedar-trabajadores_202303196416e58696c07c00018b43dd.html" target="_blank" rel="noopener"><span>laSexta</span><small>España</small><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                <a class="press-btn" href="https://cadenaser.com/nacional/2023/03/20/los-prompt-engineer-la-profesion-mas-cotizada-del-momento-saber-preguntar-y-muy-bien-a-una-inteligencia-artificial-cadena-ser/" target="_blank" rel="noopener"><span>Cadena SER</span><small>España</small><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                <a class="press-btn" href="https://www.youtube.com/watch?v=EMlD9jRfd5Q" target="_blank" rel="noopener"><span>TV3</span><small>Cataluña</small><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                <a class="press-btn" href="https://www.3cat.cat/3cat/pau-marti-felip-soc-prompt-engineer-dissenyo-instruccions-per-a-intelligencies-artificials/audio/1170229/" target="_blank" rel="noopener"><span>Catalunya Ràdio</span><small>Cataluña</small><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                <a class="press-btn" href="https://1140am.com.py/pau-marti-felip-la-ia-puede-convertirse-en-un-asistente-para-cualquier-emprendedor/" target="_blank" rel="noopener"><span>Central Radio</span><small>Paraguay</small><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                <a class="press-btn" href="https://www.senado.gov.py/index.php/menu-dircom/sub-menu-noticias-comisiones/abordan-los-desafios-y-oportunidades-de-la-ia.html" target="_blank" rel="noopener"><span>Senado TV</span><small>Paraguay</small><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                <a class="press-btn" href="https://youtu.be/Xkjyvmy6XLc" target="_blank" rel="noopener"><span>Canal 13</span><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                <a class="press-btn" href="https://www.unosantafe.com.ar/santa-fe/viene-reemplazar-o-ayudar-la-inteligencia-artificial-esta-cambiando-el-mundo-del-trabajo-n10056655.html" target="_blank" rel="noopener"><span>Diario Uno de Santa Fe</span><small>Argentina</small><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios">
+      <div class="container">
+        <div class="section-head">
+          <span class="kicker">Confían en nosotros</span>
+          <h2>Hoteles y hostels que <b>ya confían en ROAM</b></h2>
+        </div>
+      </div>
+
+      <div class="marquee" aria-label="Hoteles y hostels que confían en nosotros">
+        <div class="marquee-track"><span class="hotel-pill"><span class="dot"></span>Viajero Hostels</span><span class="hotel-pill"><span class="dot"></span>Cada Chapolin</span><span class="hotel-pill"><span class="dot"></span>Masaya Hostels</span><span class="hotel-pill"><span class="dot"></span>Marriott Mazatlán</span><span class="hotel-pill"><span class="dot"></span>Hostal Auditorio</span><span class="hotel-pill"><span class="dot"></span>Los Patios Medellín</span><span class="hotel-pill"><span class="dot"></span>La Controra Nápoles</span><span class="hotel-pill"><span class="dot"></span>Blablabla Bari</span><span class="hotel-pill"><span class="dot"></span>Ryad Layla Rouge</span><span class="hotel-pill"><span class="dot"></span>Los Amigos Nest</span><span class="hotel-pill"><span class="dot"></span>Font Andorra Hotel</span><span class="hotel-pill"><span class="dot"></span>Fira Backpackers</span><span class="hotel-pill"><span class="dot"></span>Ostello Bello</span><span class="hotel-pill"><span class="dot"></span>Intercontinental Medellín</span><span class="hotel-pill"><span class="dot"></span>Viajero Hostels</span><span class="hotel-pill"><span class="dot"></span>Cada Chapolin</span><span class="hotel-pill"><span class="dot"></span>Masaya Hostels</span><span class="hotel-pill"><span class="dot"></span>Marriott Mazatlán</span><span class="hotel-pill"><span class="dot"></span>Hostal Auditorio</span><span class="hotel-pill"><span class="dot"></span>Los Patios Medellín</span><span class="hotel-pill"><span class="dot"></span>La Controra Nápoles</span><span class="hotel-pill"><span class="dot"></span>Blablabla Bari</span><span class="hotel-pill"><span class="dot"></span>Ryad Layla Rouge</span><span class="hotel-pill"><span class="dot"></span>Los Amigos Nest</span><span class="hotel-pill"><span class="dot"></span>Font Andorra Hotel</span><span class="hotel-pill"><span class="dot"></span>Fira Backpackers</span><span class="hotel-pill"><span class="dot"></span>Ostello Bello</span><span class="hotel-pill"><span class="dot"></span>Intercontinental Medellín</span></div>
+      </div>
+
+      <div class="container">
+        <div class="section-head" style="margin-top: 4.5rem;">
+          <h2>Lo que dicen quienes <b>ya han aprendido con Pau</b></h2>
+          <p>Alumnos que han pasado por la escuela.</p>
+        </div>
+
+        <div class="testimonials">
+          <article class="glass quote quote-wide">
+            <div class="mark">“</div>
+            <p>Pau es, sin ninguna duda, mi profesor favorito de inteligencia artificial. Llevo más de un año estudiando con él y, sinceramente, gran parte de lo que sé hoy se lo debo a su forma de enseñar. Tiene una habilidad especial para hacer fácil lo que al principio parece complicado. Explica con sencillez, con muchísimo sentido del humor y siempre con una cercanía y una amabilidad que se sienten de verdad. Nunca hace que nadie se sienta mal por no saber algo.</p>
+            <div class="who"><div class="avatar">HS</div><div><strong>Helena Samper</strong><span>Alumno/a de ROAM</span></div></div>
+          </article>
+          <article class="glass quote">
+            <div class="mark">“</div>
+            <p>Pau es un excelente profesor que te atrapa desde el primer momento. Así me sucedió a mí desde hace más de un año. Es mi profesor favorito de IA. No se le escapa una novedad. Hoy he aprendido a manejar Github y diseño web con IA. Mil gracias Pau!!</p>
+            <div class="who"><div class="avatar">OQ</div><div><strong>Olga Quintanilla Marful</strong><span>Alumno/a de ROAM</span></div></div>
+          </article>
+          <article class="glass quote">
+            <div class="mark">“</div>
+            <p>Pau es el mejor profesor que he tenido, he aprendido de diseño, creación de productos, Marketing, etc. Es todo un paquete de conocimientos lo que se adquieren viendo sus videos y entrando a su academia en Skool. Super recomendado, sus clases son geniales.</p>
+            <div class="who"><div class="avatar">C</div><div><strong>Carlos</strong><span>Alumno/a de ROAM</span></div></div>
+          </article>
+          <article class="glass quote">
+            <div class="mark">“</div>
+            <p>Hoy pude aprender cómo automatizar publicaciones cada un período predeterminado, toma sólo la imagen de una base de datos, le pone un comentario según la imagen y la publica sólo en Linkedin. Muy bueno. La clase fué genial, simple y divertida. Gracias Pau.</p>
+            <div class="who"><div class="avatar">KC</div><div><strong>Karina Cristofoli</strong><span>Alumno/a de ROAM</span></div></div>
+          </article>
+          <article class="glass quote">
+            <div class="mark">“</div>
+            <p>Gracias Pau por la dedicación y la paciencia para que todos podamos estar a la par en clases super completas y difíciles como las de realizar una automatización que no son tan sencillas. Por muchas clases más como estas!!!!</p>
+            <div class="who"><div class="avatar">L</div><div><strong>Lara</strong><span>Alumno/a de ROAM</span></div></div>
+          </article>
+          <article class="glass quote">
+            <div class="mark">“</div>
+            <p>He aprendido a poner cada cosa en su sitio y así conseguir una web atractiva y a la vez eficaz; espectacular la clase.</p>
+            <div class="who"><div class="avatar">EJ</div><div><strong>eche. jose</strong><span>Alumno/a de ROAM</span></div></div>
+          </article>
+          <article class="glass quote">
+            <div class="mark">“</div>
+            <p>Espectacular la clase de hoy sobre IA aplicada a WhatsApp de manera automática! Muy bonita y superdidáctica. Como de costumbre, ¡de 10, Pau! 👏🔥</p>
+            <div class="who"><div class="avatar">PA</div><div><strong>Pablo Arbesú</strong><span>Alumno/a de ROAM</span></div></div>
+          </article>
+          <article class="glass quote">
+            <div class="mark">“</div>
+            <p>Mamma mia Pau!!! Qué nivelazo de clases. Eres el mejor tanto en conocimientos como en la forma de comunicarlos. Y esa música inicial y final que nos acompaña siempre en tus clases que nos hace vibrar! Chapeau!!!!</p>
+            <div class="who"><div class="avatar">FC</div><div><strong>Fe Cobo</strong><span>Alumno/a de ROAM</span></div></div>
+          </article>
+          <article class="glass quote">
+            <div class="mark">“</div>
+            <p>Gracias Pau por toda la manera sencilla en que nos explicas esta nueva manera de ver las aplicaciones de la IA.</p>
+            <div class="who"><div class="avatar">IG</div><div><strong>Idoneyda Gonzalez</strong><span>Alumno/a de ROAM</span></div></div>
+          </article>
+          <article class="glass quote quote-wide">
+            <div class="mark">“</div>
+            <p>¡Hola Pau! La clase de hoy ha sido de gran ayuda. Pude retomar CONECTORES que había dejado a medio camino. Sin duda, el ejemplo práctico de trabajar con Gmail lo voy a practicar a diario. Esta automatización me ahorrará mucho tiempo de producción! GRACIAS TOTALES!!</p>
+            <div class="who"><div class="avatar">BL</div><div><strong>Brunella Lorca</strong><span>Alumno/a de ROAM</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section style="padding-top: 0;">
+      <div class="container">
+        <div class="glass cta-box">
+          <h2>Que tu hotel trabaje <b>con IA</b> antes del próximo mes</h2>
+          <p>Cuéntanos tu hotel y te respondemos en menos de 2 horas.</p>
+          <button class="btn btn-dark" onclick="openModal()">Reservar plaza</button>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- ── 3. SECCIÓN DEBAJO: PASO A PASO EXPLICADO MUY FÁCIL ── -->
-  <section class="steps-section-wrapper" id="paso-a-paso">
-    
-    <!-- ── DETALLE FOTOS (LA CHICA) ── -->
-    <div id="sectionContentFotos">
-      <div class="steps-title-header">
-        <span class="steps-tag-small">PASO A PASO · ROAM FOTOS</span>
-        <h2 class="steps-main-h2">Cómo conseguimos transformar tu hotel</h2>
-        <p class="steps-lead-sub">
-          Sin costes ocultos. Nosotros nos costeamos nuestros propios vuelos y comidas. Tú solo nos dejas una habitación que tengas libre.
-        </p>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div><strong>ROAM.</strong> &copy; 2026 · Escuela Superior de Formación en Hostelería con Inteligencia Artificial</div>
+      <div class="footer-links">
+        <a href="https://wa.me/34601108311" target="_blank" rel="noopener">WhatsApp +34 601 108 311</a>
+        <a href="https://www.youtube.com/@paumartifelip" target="_blank" rel="noopener">YouTube @paumartifelip</a>
+        <a href="mailto:hola@roamhoteles.com">hola@roamhoteles.com</a>
       </div>
-
-      <div class="steps-4grid">
-        <div class="step-card-clean">
-          <div class="step-num-big">01</div>
-          <div class="step-title-h3">Nos recibes</div>
-          <div class="step-desc-p">Nos das una habitación para 2 personas (Michelle y Pau) durante los días acordados.</div>
-        </div>
-        <div class="step-card-clean">
-          <div class="step-num-big">02</div>
-          <div class="step-title-h3">Vivimos tu hotel</div>
-          <div class="step-desc-p">Probamos el desayuno, las zonas comunes y la cama como si fuéramos huéspedes reales.</div>
-        </div>
-        <div class="step-card-clean">
-          <div class="step-num-big">03</div>
-          <div class="step-title-h3">Fotos y vídeos</div>
-          <div class="step-desc-p">Grabamos vídeos dinámicos para Instagram/TikTok y fotos profesionales de alta resolución.</div>
-        </div>
-        <div class="step-card-clean">
-          <div class="step-num-big">04</div>
-          <div class="step-title-h3">Tuyo para siempre</div>
-          <div class="step-desc-p">Te entregamos todo el material editado listo para subir a tu web, redes y Booking.</div>
-        </div>
-      </div>
-
-      <!-- PAQUETES DE NOCHES CLAROS Y CON AIRE -->
-      <div class="steps-title-header" style="margin-top: 5rem; margin-bottom: 3.5rem;">
-        <span class="steps-tag-small">ELIGE TU FORMATO DE ESTANCIA · 0€ EN DINERO</span>
-        <h3 class="steps-main-h2" style="font-size: 2.5rem;">Nuestra moneda son tus noches vacías</h3>
-        <p class="steps-lead-sub" style="margin-top: 0.8rem; font-size: 1.18rem;">
-          Tú eliges cuál de las 2 opciones de estancia encaja mejor con las fechas y habitaciones libres de tu hotel:
-        </p>
-      </div>
-
-      <div class="steps-2grid package-grid-spacious" style="max-width: 1080px; margin: 2rem auto 6rem;">
-        <!-- 1. ROAM WEEK: 7 DÍAS · 7 NOCHES -->
-        <div class="package-card-clean">
-          <div class="package-card-inner">
-            <div class="package-top-pill-wrap">
-              <span class="package-duration-tag">7 DÍAS · 7 NOCHES DE ESTANCIA</span>
-            </div>
-            <div class="package-clean-title">ROAM WEEK</div>
-            <div class="package-duration-highlight">
-              <span class="dur-number">7</span>
-              <span class="dur-unit">noches de estancia (7 días)</span>
-            </div>
-            <div class="package-clean-sub">Habitación doble para el equipo durante 7 noches completas (1 semana)</div>
-            
-            <div class="package-divider"></div>
-
-            <ul class="package-clean-list">
-              <li><span class="chk">✓</span> <strong>100 fotos profesionales</strong> de habitaciones, zonas comunes y detalles</li>
-              <li><span class="chk">✓</span> <strong>5 vídeos dinámicos</strong> para Reels, TikTok y anuncios</li>
-              <li><span class="chk">✓</span> <strong>1 vídeo recorrido</strong> completo de la experiencia del huésped</li>
-              <li><span class="chk">✓</span> Cobertura de desayuno, piscina, exterior y atardecer</li>
-              <li><span class="chk">✓</span> Entrega en máxima calidad para web, redes y Booking</li>
-            </ul>
-          </div>
-
-          <div class="package-card-footer">
-            <a href="https://wa.me/34601108311?text=Hola%20Michelle%20y%20Pau,%20quiero%20el%20pack%20ROAM%20WEEK%20(7%20noches)%20para%20mi%20hotel" class="hero-main-btn package-btn" target="_blank">
-              Proponer 7 Noches (7 Días) →
-            </a>
-          </div>
-        </div>
-
-        <!-- 2. ROAM STAY: 3 SEMANAS · 21 NOCHES -->
-        <div class="package-card-clean featured">
-          <div class="package-card-inner">
-            <div class="package-top-pill-wrap">
-              <span class="package-duration-tag featured-tag">★ 3 SEMANAS · 21 NOCHES DE ESTANCIA</span>
-            </div>
-            <div class="package-clean-title">ROAM STAY</div>
-            <div class="package-duration-highlight">
-              <span class="dur-number">21</span>
-              <span class="dur-unit">noches de estancia (3 semanas)</span>
-            </div>
-            <div class="package-clean-sub">Habitación doble para el equipo durante 3 semanas completas (21 noches)</div>
-            
-            <div class="package-gift-box">
-              ★ <strong>REGALO INCLUIDO:</strong> Diagnóstico práctico de tecnología e inteligencia artificial para el hotel, analizando qué herramientas de IA pueden mejorar tus procesos y ahorrar tiempo.
-            </div>
-
-            <ul class="package-clean-list">
-              <li><span class="chk">✓</span> <strong>Renovación fotográfica total</strong> de todo el hotel sin excepciones</li>
-              <li><span class="chk">✓</span> <strong>200 fotos profesionales</strong> de máxima calidad editorial de todo el hotel</li>
-              <li><span class="chk">✓</span> <strong>10 vídeos dinámicos</strong> para redes sociales y campañas publicitarias</li>
-              <li><span class="chk">✓</span> <strong>Vídeos cinematográficos</strong> de recorrido y experiencia del hotel</li>
-              <li><span class="chk">✓</span> <strong>1:30 hora de formación práctica para el equipo</strong> de las herramientas de inteligencia artificial</li>
-              <li><span class="chk">✓</span> Creación de la biblioteca visual del hotel para todo el año</li>
-            </ul>
-          </div>
-
-          <div class="package-card-footer">
-            <a href="https://wa.me/34601108311?text=Hola%20Michelle%20y%20Pau,%20quiero%20el%20pack%20ROAM%20STAY%20(3%20semanas%20-%2021%20noches)%20para%20mi%20hotel" class="hero-main-btn package-btn" target="_blank">
-              Proponer 3 Semanas (21 Noches) →
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- QUIÉN REALIZARÁ ESTO · FOTOS -->
-      <div class="author-clean-card">
-        <div class="author-avatar-wrap">
-          <img src="assets/michelle-cano.jpg" alt="Michelle Cano" class="author-avatar-img" />
-        </div>
-        <div class="author-tag-pill">QUIÉN REALIZARÁ ESTO</div>
-        <div class="author-name-title">Michelle Cano</div>
-        <div class="author-desc-text">Fotógrafa profesional de hoteles.</div>
-      </div>
-    </div>
-
-    <!-- ── DETALLE SEO (EL CHICO ROJO) ── -->
-    <div id="sectionContentSeo" style="display:none">
-      <div class="steps-title-header">
-        <span class="steps-tag-small">PASO A PASO · ROAM SEO</span>
-        <h2 class="steps-main-h2">Cómo logramos que dejes de depender de Booking</h2>
-        <p class="steps-lead-sub">
-          Cuando los viajeros buscan hotel en su móvil o preguntan a ChatGPT, hacemos que tu hotel aparezca antes que los demás para que reserven directo contigo.
-        </p>
-      </div>
-
-      <div class="steps-4grid">
-        <div class="step-card-clean">
-          <div class="step-num-big">01</div>
-          <div class="step-title-h3">Diagnóstico inicial</div>
-          <div class="step-desc-p">Miramos qué sale hoy en Google y en ChatGPT cuando alguien busca dormir en tu zona.</div>
-        </div>
-        <div class="step-card-clean">
-          <div class="step-num-big">02</div>
-          <div class="step-title-h3">Salir en ChatGPT</div>
-          <div class="step-desc-p">Estructuramos la información de tu hotel para que la inteligencia artificial te recomiende el primero.</div>
-        </div>
-        <div class="step-card-clean">
-          <div class="step-num-big">03</div>
-          <div class="step-title-h3">Google Maps al 100%</div>
-          <div class="step-desc-p">Ficha optimizada con fotos, reseñas y botón directo para que te llamen o escriban al instante.</div>
-        </div>
-        <div class="step-card-clean">
-          <div class="step-num-big">04</div>
-          <div class="step-title-h3">Reserva directa</div>
-          <div class="step-desc-p">Web rápida en el móvil con botón claro de WhatsApp. El 100% del dinero se queda en tu hotel.</div>
-        </div>
-      </div>
-
-      <!-- PAQUETE SEO: 7 DÍAS · 7 NOCHES DE ESTANCIA -->
-      <div class="steps-title-header" style="margin-top: 5rem; margin-bottom: 3.5rem;">
-        <span class="steps-tag-small">FORMATO DE COLABORACIÓN · 0€ EN DINERO</span>
-        <h3 class="steps-main-h2" style="font-size: 2.5rem;">7 Días de Estancia (7 Noches en tu Hotel)</h3>
-        <p class="steps-lead-sub" style="margin-top: 0.8rem; font-size: 1.18rem;">
-          Nos alojas 7 noches en una habitación libre y nosotros dejamos el posicionamiento de tu hotel al 100%.
-        </p>
-      </div>
-
-      <div style="max-width: 680px; width: 100%; margin: 0 auto 3rem;">
-        <div class="package-card-clean featured">
-          <div class="package-card-inner">
-            <div class="package-top-pill-wrap">
-              <span class="package-duration-tag featured-tag">★ 7 DÍAS · 7 NOCHES DE ESTANCIA</span>
-            </div>
-            <div class="package-clean-title">ROAM SEO</div>
-            <div class="package-duration-highlight">
-              <span class="dur-number">7</span>
-              <span class="dur-unit">noches de estancia (7 días)</span>
-            </div>
-            <div class="package-clean-sub">Habitación doble para el especialista durante 7 noches completas (1 semana)</div>
-            
-            <div class="package-divider"></div>
-
-            <ul class="package-clean-list">
-              <li><span class="chk">✓</span> <strong>Auditoría profunda</strong> de visibilidad actual y competencia en tu zona</li>
-              <li><span class="chk">✓</span> <strong>Google Business y Maps optimizados al 100%</strong> con fotos, categorías y llamadas</li>
-              <li><span class="chk">✓</span> <strong>Estructuración de datos para ChatGPT y Perplexity</strong> para salir recomendados</li>
-              <li><span class="chk">✓</span> <strong>Canal de reserva directa móvil</strong> por WhatsApp para no pagar el 20% a Booking</li>
-            </ul>
-          </div>
-
-          <div class="package-card-footer">
-            <a href="https://wa.me/34601108311?text=Hola,%20quiero%20proponer%207%20noches%20(7%20d%C3%ADas)%20en%20mi%20hotel%20para%20el%20servicio%20de%20ROAM%20SEO" class="hero-main-btn package-btn" target="_blank">
-              Proponer 7 Noches (7 Días) de SEO →
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- QUIÉN REALIZARÁ ESTO · SEO -->
-      <div class="author-clean-card">
-        <div class="author-avatar-wrap">
-          <img src="assets/pau-marti.jpg" alt="Pau Martí" class="author-avatar-img" />
-        </div>
-        <div class="author-tag-pill">QUIÉN REALIZARÁ ESTO</div>
-        <div class="author-name-title">Pau Martí</div>
-        <div class="author-desc-text">Especialista en SEO para hoteles y profesor de Inteligencia Artificial en las mejores universidades del mundo.</div>
-      </div>
-    </div>
-
-    <!-- ── DETALLE IA (EL SEÑOR AZUL) ── -->
-    <div id="sectionContentIa" style="display:none">
-      <div class="steps-title-header">
-        <span class="steps-tag-small">PASO A PASO · INTELIGENCIA ARTIFICIAL</span>
-        <h2 class="steps-main-h2">3 Semanas de Estancia (21 Noches) · 3 Sesiones</h2>
-        <p class="steps-lead-sub">
-          Pau Martí se aloja durante 3 semanas (21 noches de estancia) en tu hotel para trabajar con tu equipo: 1 sesión práctica de 1 hora por semana para aprender y automatizar sin sobrecargar.
-        </p>
-      </div>
-
-      <!-- LOS 6 RETOS RESUELTOS -->
-      <div class="steps-title-header" style="margin-bottom:2.5rem">
-        <span class="steps-tag-small">LOS 6 RETOS COTIDIANOS QUE SOLUCIONAMOS</span>
-      </div>
-
-      <div class="steps-3grid" style="margin-bottom: 5rem;">
-        <div class="step-card-clean">
-          <div class="step-num-big">01</div>
-          <div class="step-title-h3">Depender de Booking</div>
-          <div class="step-desc-p">Pocas reservas directas y pagar comisiones del 20% a intermediarios.</div>
-        </div>
-        <div class="step-card-clean">
-          <div class="step-num-big">02</div>
-          <div class="step-title-h3">Responder tarde</div>
-          <div class="step-desc-p">Mensajes acumulados en WhatsApp mientras el cliente reserva en otro hotel.</div>
-        </div>
-        <div class="step-card-clean">
-          <div class="step-num-big">03</div>
-          <div class="step-title-h3">No mostrar tu encanto</div>
-          <div class="step-desc-p">Tener un hotel precioso que en internet parece uno más por fotos o textos sosos.</div>
-        </div>
-        <div class="step-card-clean">
-          <div class="step-num-big">04</div>
-          <div class="step-title-h3">Desaprovechar reseñas</div>
-          <div class="step-desc-p">No utilizarlas para generar confianza y convencer a nuevos huéspedes.</div>
-        </div>
-        <div class="step-card-clean">
-          <div class="step-num-big">05</div>
-          <div class="step-title-h3">Tareas repetitivas</div>
-          <div class="step-desc-p">El equipo pierde horas contestando las mismas dudas una y otra vez.</div>
-        </div>
-        <div class="step-card-clean">
-          <div class="step-num-big">06</div>
-          <div class="step-title-h3">No saber cómo empezar</div>
-          <div class="step-desc-p">Querer usar la IA pero sin saber cómo aplicarla al trabajo real de cada día.</div>
-        </div>
-      </div>
-
-      <!-- LAS 3 SESIONES: 1 HORA POR SEMANA -->
-      <div class="steps-title-header" style="margin-top: 5rem; margin-bottom: 3.5rem;">
-        <span class="steps-tag-small">FORMATO DEL PROGRAMA · 3 SEMANAS (21 NOCHES DE ESTANCIA)</span>
-        <h3 class="steps-main-h2" style="font-size: 2.5rem;">3 Semanas de Estancia · Una Sesión por Semana</h3>
-        <p class="steps-lead-sub" style="margin-top: 0.8rem; font-size: 1.18rem;">
-          21 noches de colaboración con Pau Martí y 3 sesiones prácticas de 60 minutos para aplicar soluciones reales en tu hotel:
-        </p>
-      </div>
-
-      <div class="steps-3grid package-grid-spacious">
-        <!-- SESIÓN 1 -->
-        <div class="package-card-clean">
-          <div class="package-card-inner">
-            <div class="package-top-pill-wrap">
-              <span class="package-duration-tag">SEMANA 01 · 1 HORA</span>
-            </div>
-            <div class="package-clean-title">Sesión 1</div>
-            <div class="package-duration-highlight">
-              <span class="dur-number">1h</span>
-              <span class="dur-unit">Semana 1: Reservas y Visibilidad</span>
-            </div>
-            <div class="package-clean-sub">Solución a los Retos 01, 03 y 04</div>
-            
-            <div class="package-divider"></div>
-
-            <ul class="package-clean-list">
-              <li><span class="chk">✓</span> Cómo lograr que los huéspedes reserven directo en tu web</li>
-              <li><span class="chk">✓</span> Salir recomendado en ChatGPT y Google cuando buscan hotel</li>
-              <li><span class="chk">✓</span> Analizar cientos de opiniones con IA para mejorar la venta</li>
-              <li><span class="chk">✓</span> Auditoría en vivo de la presencia online de tu propio hotel</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- SESIÓN 2 -->
-        <div class="package-card-clean featured">
-          <div class="package-card-inner">
-            <div class="package-top-pill-wrap">
-              <span class="package-duration-tag featured-tag">★ SEMANA 02 · 1 HORA</span>
-            </div>
-            <div class="package-clean-title">Sesión 2</div>
-            <div class="package-duration-highlight">
-              <span class="dur-number">1h</span>
-              <span class="dur-unit">Semana 2: WhatsApp 24/7 y Ventas</span>
-            </div>
-            <div class="package-clean-sub">Solución a los Retos 02 y 05</div>
-            
-            <div class="package-divider"></div>
-
-            <ul class="package-clean-list">
-              <li><span class="chk">✓</span> Respuestas automáticas en WhatsApp 24/7 para no perder reservas</li>
-              <li><span class="chk">✓</span> Redacción de correos y traducción multiidioma al instante</li>
-              <li><span class="chk">✓</span> Atención al viajero en segundos de noche o en fin de semana</li>
-              <li><span class="chk">✓</span> Ahorro inmediato de tiempo en consultas frecuentes</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- SESIÓN 3 -->
-        <div class="package-card-clean">
-          <div class="package-card-inner">
-            <div class="package-top-pill-wrap">
-              <span class="package-duration-tag">SEMANA 03 · 1 HORA</span>
-            </div>
-            <div class="package-clean-title">Sesión 3</div>
-            <div class="package-duration-highlight">
-              <span class="dur-number">1h</span>
-              <span class="dur-unit">Semana 3: Productividad del Equipo</span>
-            </div>
-            <div class="package-clean-sub">Solución a los Retos 05 y 06</div>
-            
-            <div class="package-divider"></div>
-
-            <ul class="package-clean-list">
-              <li><span class="chk">✓</span> Formación práctica para recepción, marketing y dirección</li>
-              <li><span class="chk">✓</span> Ahorro de hasta 2 horas al día en tareas mecánicas</li>
-              <li><span class="chk">✓</span> Plantillas listas y personalizadas para usar hoy mismo</li>
-              <li><span class="chk">✓</span> Plan de hábitos de IA para que el equipo continúe sin dudas</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- BOTÓN PRINCIPAL PARA LAS 3 SESIONES DE IA -->
-      <div style="text-align: center; margin-bottom: 5rem; width: 100%;">
-        <a href="https://wa.me/34601108311?text=Hola%20Pau,%20quiero%20proponer%20el%20acuerdo%20de%203%20semanas%20(21%20noches)%20y%20las%203%20sesiones%20de%20IA%20para%20mi%20hotel" class="hero-main-btn ia-cta-btn" target="_blank">
-          Proponer 3 Semanas (21 Noches) de IA con Pau Martí →
-        </a>
-      </div>
-
-      <!-- QUIÉN REALIZARÁ ESTO · IA -->
-      <div class="author-clean-card">
-        <div class="author-avatar-wrap">
-          <img src="assets/pau-marti.jpg" alt="Pau Martí" class="author-avatar-img" />
-        </div>
-        <div class="author-tag-pill">QUIÉN REALIZARÁ ESTO</div>
-        <div class="author-name-title">Pau Martí</div>
-        <div class="author-desc-text">Especialista en SEO para hoteles y profesor de Inteligencia Artificial en las mejores universidades del mundo.</div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ── 4. PIE DE PÁGINA ── -->
-  <footer class="clean-footer">
-    <div>ROAM Hoteles · Pau Martí & Michelle Cano</div>
-    <div style="display:flex;gap:2rem">
-      <a href="javascript:switchSection('fotos')">Fotos y contenido</a>
-      <a href="javascript:switchSection('seo')">SEO</a>
-      <a href="javascript:switchSection('ia')">Inteligencia artificial</a>
-      <a href="https://wa.me/34601108311" target="_blank">WhatsApp Directo</a>
     </div>
   </footer>
 
-  <!-- ── 5. LÓGICA DE INTERCAMBIO DE SECCIONES CON TEMA COMPLETO ── -->
+  <!-- MODAL -->
+  <div class="modal-backdrop" id="modal" onclick="if (event.target === this) closeModal()">
+    <div class="glass modal">
+      <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+      <h3>Reserva tu plaza</h3>
+      <p>Completa los datos de tu hotel y te responderemos en menos de 2 horas.</p>
+      <form onsubmit="submitForm(event)">
+        <div class="field">
+          <label for="userOption">Opción</label>
+          <select id="userOption">
+            <option value="1">Opción 1 · Pago directo (1.990 $ USD)</option>
+            <option value="2">Opción 2 · Canje (290 $ USD + 4 semanas / 28 días de estancia)</option>
+            <option value="0">Aún no lo sé, quiero más información</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="userName">Nombre y cargo</label>
+          <input type="text" id="userName" placeholder="Ej: María Gómez (Directora de Operaciones)" required />
+        </div>
+        <div class="field">
+          <label for="userHotel">Nombre del hotel</label>
+          <input type="text" id="userHotel" placeholder="Ej: Hotel Boutique Costa Azul" required />
+        </div>
+        <div class="field">
+          <label for="userPhone">Teléfono / WhatsApp</label>
+          <input type="tel" id="userPhone" placeholder="+34 600 000 000" required />
+        </div>
+        <div class="field">
+          <label for="userNotes">Comentarios (opcional)</label>
+          <textarea id="userNotes" rows="2" placeholder="Número de empleados, fechas, dudas..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark">Enviar solicitud</button>
+      </form>
+    </div>
+  </div>
+
   <script>
-    const sections = {
-      fotos: {
-        bg: "var(--bg-fotos)",
-        text: "var(--text-fotos)",
-        muted: "var(--text-fotos-muted)",
-        card: "var(--card-fotos)",
-        btn: "var(--btn-fotos)",
-        btnText: "var(--btn-fotos-text)",
-        preTag: "BLOQUE 01 · FOTOGRAFÍA & VÍDEO",
-        from: "De fotos viejas que nadie mira,",
-        to: "a un hotel irresistible que se llena porque enamora a primera vista.",
-        before: "Fotos oscuras en el móvil, habitaciones que parecen normales y viajeros que se van a la competencia.",
-        after: "Fotos profesionales luminosas y vídeos atractivos que hacen que los viajeros quieran reservar de inmediato.",
-        deal: "El trato: 0€ en dinero a cambio de estancia (7 noches o 3 semanas / 21 noches).",
-        dealIcon: "🤝",
-        btnLabel: "Quiero estas Fotos para mi Hotel",
-        waText: "Hola Michelle y Pau, quiero renovar las fotos de mi hotel a cambio de estancia (7 noches o 21 noches)",
-        img: "assets/personaje-amarillo.jpg"
-      },
-      seo: {
-        bg: "var(--bg-seo)",
-        text: "var(--text-seo)",
-        muted: "var(--text-seo-muted)",
-        card: "var(--card-seo)",
-        btn: "var(--btn-seo)",
-        btnText: "var(--btn-seo-text)",
-        preTag: "BLOQUE 02 · ROAM SEO & BÚSQUEDA",
-        from: "De pagar un 20% a Booking,",
-        to: "a salir el primero en Google y ChatGPT para quedarte todo el dinero.",
-        before: "Depender de intermediarios, tener pocas reservas directas y regalar miles de euros en comisiones.",
-        after: "Aparecer el primero cuando alguien busca hotel en tu zona desde su móvil o en ChatGPT y cobrar directo tú.",
-        deal: "El trato: 0€ en dinero a cambio de 7 días de estancia (7 noches en tu hotel).",
-        dealIcon: "🤝",
-        btnLabel: "Proponer 7 Noches (7 Días) de SEO",
-        waText: "Hola, quiero proponer 7 noches de estancia (7 días) en mi hotel para que optimicéis el SEO y salir el primero en Google y ChatGPT",
-        img: "assets/personaje-rojo.jpg"
-      },
-      ia: {
-        bg: "var(--bg-ia)",
-        text: "var(--text-ia)",
-        muted: "var(--text-ia-muted)",
-        card: "var(--card-ia)",
-        btn: "var(--btn-ia)",
-        btnText: "var(--btn-ia-text)",
-        preTag: "BLOQUE 03 · INTELIGENCIA ARTIFICIAL",
-        from: "De perder clientes por contestar tarde,",
-        to: "a responder en 2 segundos por WhatsApp 24/7 y ahorrar 2 horas al día.",
-        before: "Recepción saturada de preguntas repetitivas, clientes esperando respuesta y procesos manuales lentos.",
-        after: "Un equipo entrenado que responde dudas en segundos, automatiza tareas rutinarias y no pierde ventas.",
-        deal: "El trato: 0€ en dinero a cambio de 3 semanas de estancia (21 noches) · 1 sesión de 1 hora por semana con Pau Martí.",
-        dealIcon: "⚡",
-        btnLabel: "Proponer 3 Semanas (21 Noches) de IA",
-        waText: "Hola Pau, quiero proponer 3 semanas de estancia (21 noches) en mi hotel y las 3 sesiones de IA (1 hora por semana)",
-        img: "assets/personaje-azul.jpg"
-      }
-    };
+    const modal = document.getElementById('modal');
+    const navLinks = document.getElementById('navLinks');
 
-    function switchSection(secKey) {
-      // 1. Actualizar pestañas del menú superior
-      document.getElementById('btnTabFotos').classList.toggle('active', secKey === 'fotos');
-      document.getElementById('btnTabSeo').classList.toggle('active', secKey === 'seo');
-      document.getElementById('btnTabIa').classList.toggle('active', secKey === 'ia');
-
-      const s = sections[secKey];
-
-      // 2. Cambiar variables de color del fondo y textos
-      document.documentElement.style.setProperty('--current-bg', s.bg);
-      document.documentElement.style.setProperty('--current-text', s.text);
-      document.documentElement.style.setProperty('--current-muted', s.muted);
-      document.documentElement.style.setProperty('--current-card', s.card);
-      document.documentElement.style.setProperty('--current-btn', s.btn);
-      document.documentElement.style.setProperty('--current-btn-text', s.btnText);
-
-      // 3. Actualizar textos de transformación a la izquierda (De dónde estás -> A dónde vas)
-      document.getElementById('heroPreTag').innerText = s.preTag;
-      document.getElementById('heroH1From').innerText = s.from;
-      document.getElementById('heroH1To').innerText = s.to;
-      document.getElementById('transBefore').innerText = s.before;
-      document.getElementById('transAfter').innerText = s.after;
-      document.getElementById('heroDealText').innerText = s.deal;
-      document.getElementById('dealIcon').innerText = s.dealIcon;
-      document.getElementById('heroBtnText').innerText = s.btnLabel;
-      document.getElementById('heroMainBtn').href = "https://wa.me/34601108311?text=" + encodeURIComponent(s.waText);
-      document.getElementById('navCta').href = "https://wa.me/34601108311?text=" + encodeURIComponent(s.waText);
-
-      // 4. Actualizar personaje a la derecha (muy grande)
-      document.getElementById('characterImg').src = s.img;
-
-      // 5. Mostrar la sección paso a paso correspondiente debajo
-      document.getElementById('sectionContentFotos').style.display = (secKey === 'fotos') ? 'block' : 'none';
-      document.getElementById('sectionContentSeo').style.display = (secKey === 'seo') ? 'block' : 'none';
-      document.getElementById('sectionContentIa').style.display = (secKey === 'ia') ? 'block' : 'none';
+    function openModal(option) {
+      if (option) document.getElementById('userOption').value = option;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
 
-    // Comprobar hash en la URL al cargar y al cambiar
-    function applyHash() {
-      const hash = window.location.hash.replace('#', '');
-      if (sections[hash]) {
-        switchSection(hash);
-      }
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
     }
-    applyHash();
-    window.addEventListener('hashchange', applyHash);
+
+    function toggleNav() { navLinks.classList.toggle('open'); }
+    function closeNav() { navLinks.classList.remove('open'); }
+
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    function submitForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('userName').value;
+      const hotel = document.getElementById('userHotel').value;
+      const phone = document.getElementById('userPhone').value;
+      const notes = document.getElementById('userNotes').value;
+
+      const optionText = {
+        '1': 'la Opción 1 (pago directo, 1.990 $ USD)',
+        '2': 'la Opción 2 (canje: 290 $ USD + 4 semanas / 28 días de estancia)',
+        '0': 'la formación (me gustaría más información sobre las opciones)'
+      }[document.getElementById('userOption').value];
+
+      const message = `Hola ROAM, me interesa ${optionText} de la *Formación de IA para Hoteles (1 mes)* para el *${hotel}*. Mi nombre es ${name}, mi teléfono es ${phone}.${notes ? ' Detalles: ' + notes : ''}`;
+      window.open(`https://wa.me/34601108311?text=${encodeURIComponent(message)}`, '_blank');
+      closeModal();
+    }
   </script>
-
 </body>
 </html>
